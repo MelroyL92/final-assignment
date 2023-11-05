@@ -1,0 +1,23 @@
+
+.section-container{
+    display: flex;
+    width: 85vw;
+}
+
+.homepage-image{
+    width: 100%;
+}
+
+.image{
+    display: flex;
+    width: 85vw;
+    height: 50vh;
+    clip-path: polygon(0 0, 100% 0, 100% 60%, 0 100%);
+}
+
+.img-searchbar-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 10px 0px;
+    align-items: center;
+}

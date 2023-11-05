@@ -1,22 +1,44 @@
 import {Link} from "react-router-dom"
+import './Navlinks.css'
 
 
-
-function Navlinks (){
+function NavLinks (){
 
     return (
-        <nav className="nav-links-parent">
-            <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="list">List</Link></li>
-                <li><Link to="Search">Search</Link></li>
-                <li><Link to="About">About</Link></li>
-                <li><Link to="Login">Login</Link></li>
-                <li><Link to="Register">Register</Link></li>
-            </ul>
-
+        <div className="nav-class">
+        <nav>
+                 <ul>
+                    <li className="nav-list-item-logo">logo</li>
+                    <li className="nav-list-item"><Link to="/">
+                        <div className="list-class">
+                        <img src="src/assets/house-line-thin.svg" alt="home icon"/>
+                       Home</div>
+                        </Link></li>
+                    <li className="nav-list-item"><Link to="/WishlistOverview">
+                        <div className="list-class">
+                        <img src="src/assets/list-thin.svg" alt="wishlist icon"/>
+                        wishlists</div>
+                    </Link></li>
+                    <li className="nav-list-item"><Link to="/SearchResultPage">
+                        <div className="list-class">
+                        <img src="src/assets/magnifying-glass-thin.svg" alt="magnifying glass icon"/>
+                        Search</div></Link></li>
+                    <li className="nav-list-item"><Link to="/About">
+                        <div className="list-class">
+                        <img src="src/assets/info-thin.svg" alt="about icon"/>
+                        About</div></Link></li>
+                    <li className="nav-list-item"><Link to="/Login">
+                        <div className="list-class">
+                        <img src="src/assets/user-thin.svg" alt="login icon"/>
+                        Login</div></Link></li>
+                    <li className="nav-list-item"><Link to="/Register">
+                        <div className="list-class">
+                        <img src="src/assets/alien-thin.svg" alt="register icon"/>
+                        Register</div></Link></li>
+                </ul>
         </nav>
+        </div>
     )
 }
 
-export default Navlinks
+export default NavLinks

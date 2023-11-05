@@ -1,0 +1,38 @@
+
+.head-container {
+    display: flex;
+    height: 30vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.list-wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 20vh;
+    width: 85vw;
+
+}
+
+.list-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 20vh;
+    margin: 10px 10px;
+    border: 5px outset grey;
+}
+
+.result-class {
+    height: 70vh;
+}

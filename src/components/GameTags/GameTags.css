@@ -1,0 +1,16 @@
+
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+
+.tag-item {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 3px;
+    margin: 2px;
+    align-items: center;
+}
