@@ -1,18 +1,16 @@
-.nav-class {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    width: 15vw;
-    height: 100vh;
-    background-color: darkgray;
-}
 
 .list-class{
     display: flex;
-    flex-direction: row;
+    flex-direction: row-reverse;
     align-items: center;
-    height: 13vh;
+    margin: 2px 5px 0;
+    border-radius: 25%;
+    justify-content: space-evenly;
+    height: 16vh;
+    border: 3px outset black;
 }
+
+
 
 
 
