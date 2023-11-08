@@ -1,6 +1,7 @@
 import {useContext, useEffect, useState} from 'react';
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import './GameTags.css'
+import {CirclesWithBar} from "react-loader-spinner";
 
 
 
@@ -58,6 +59,7 @@ function GameTags ({type}) {
                                 {gameInfo && gameInfo.platforms && gameInfo.platforms.length > 0 && gameInfo.platforms.map((platform) => (
                                 <li className="tag-item" key={platform.platform.id}>{platform.platform.name}</li>
                                 ))}
+
                         </ul>
                     </>
                 );

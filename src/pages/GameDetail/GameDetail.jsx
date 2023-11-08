@@ -5,10 +5,14 @@ import './GameDetail.css'
 import GameTags from "../../components/GameTags/GameTags.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import CreateWishlist from "../../components/CreateWishlist/CreateWishlist.jsx";
+import {CirclesWithBar} from "react-loader-spinner";
+import Purifyer from "../../helpers/Purifyer/Purifyer.jsx";
+
 
 function GameDetail () {
     const {gameInfo, fetchGameInfo} = useContext(GameInfoContext)
     const [error, toggleError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
 
     let { id } = useParams();
@@ -19,6 +23,7 @@ function GameDetail () {
         async function fetchGameData() {
             const apiKey = 'cfbdc29c24df4c6ead2de38a04292a7e'
             toggleError(false)
+            setLoading(false)
 
             try {
                 const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${apiKey}`)
@@ -27,11 +32,13 @@ function GameDetail () {
             } catch (e) {
                 console.error(e)
                 toggleError(true)
+                setLoading(true)
             }
 
         }
         void fetchGameData()
     },[id]);
+
 
 
     return (
@@ -46,12 +53,15 @@ function GameDetail () {
                <div>
                    <h1>{gameInfo.name}</h1>
                    <p> Released:{gameInfo.released}</p>
-                  <p> description: {gameInfo.description}</p>
+                    <Purifyer gameInfo={gameInfo}/>
+                   {/*to show if there is no description available*/}
+                   {!gameInfo.description && <p>There is no description for {gameInfo.name}</p>}
                </div>
                <div>
                    <article>
                    <h3>Metacritic</h3>
                        <p>{gameInfo.metacritic}</p>
+                       {!gameInfo.metacritic && <p>There are no metacritics available for {gameInfo.name}</p>}
                    </article>
 
                </div>
@@ -62,6 +72,17 @@ function GameDetail () {
                     <article><GameTags gameInfo={gameInfo} type ='publisher'/></article>
                     <article><GameTags gameInfo={gameInfo} type ='tags'/></article>
                     <article><GameTags gameInfo={gameInfo} type ='platform'/></article>
+                    {loading && <CirclesWithBar
+                        height="100"
+                        width="100"
+                        color="#4fa94d"
+                        wrapperStyle={{}}
+                        wrapperClass=""
+                        visible={true}
+                        outerCircleColor=""
+                        innerCircleColor=""
+                        barColor=""
+                        ariaLabel='circles-with-bar-loading'/>}
                 </section>
             </div>
             <footer className="footer-game-info">

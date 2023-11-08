@@ -7,33 +7,33 @@ function NavLinks (){
     return (
         <div className="nav-class">
         <nav>
-                 <ul>
-                    <li className="nav-list-item-logo">logo</li>
-                    <li className="nav-list-item"><Link to="/">
+                 <ul className="nav-list-item">
+                   <div className="list-class"><li>logo</li></div>
+                     <li><Link to="/">
                         <div className="list-class">
-                        <img src="src/assets/house-line-thin.svg" alt="home icon"/>
+                        <span className="icon-wrapper"><img src="src/assets/house-line-thin.svg" alt="home icon"/></span>
                        Home</div>
                         </Link></li>
-                    <li className="nav-list-item"><Link to="/WishlistOverview">
+                    <li><Link to="/WishlistOverview">
                         <div className="list-class">
-                        <img src="src/assets/list-thin.svg" alt="wishlist icon"/>
+                         <span className="icon-wrapper"><img src="src/assets/list-thin.svg" alt="wishlist icon"/></span>
                         wishlists</div>
                     </Link></li>
-                    <li className="nav-list-item"><Link to="/SearchResultPage">
+                    <li><Link to="/SearchResultPage">
                         <div className="list-class">
-                        <img src="src/assets/magnifying-glass-thin.svg" alt="magnifying glass icon"/>
+                         <span className="icon-wrapper"><img src="src/assets/magnifying-glass-thin.svg" alt="magnifying glass icon"/></span>
                         Search</div></Link></li>
-                    <li className="nav-list-item"><Link to="/About">
+                    <li><Link to="/About">
                         <div className="list-class">
-                        <img src="src/assets/info-thin.svg" alt="about icon"/>
+                         <span className="icon-wrapper"><img src="src/assets/info-thin.svg" alt="about icon"/></span>
                         About</div></Link></li>
-                    <li className="nav-list-item"><Link to="/Login">
+                    <li><Link to="/Login">
                         <div className="list-class">
-                        <img src="src/assets/user-thin.svg" alt="login icon"/>
+                         <span className="icon-wrapper"><img src="src/assets/user-thin.svg" alt="login icon"/></span>
                         Login</div></Link></li>
-                    <li className="nav-list-item"><Link to="/Register">
+                    <li><Link to="/Register">
                         <div className="list-class">
-                        <img src="src/assets/alien-thin.svg" alt="register icon"/>
+                         <span className="icon-wrapper"><img src="src/assets/alien-thin.svg" alt="register icon"/></span>
                         Register</div></Link></li>
                 </ul>
         </nav>

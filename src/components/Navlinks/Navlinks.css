@@ -1,34 +1,19 @@
 .nav-class {
- width: 15vw;
-}
-
-ul {
- list-style: none;
-}
-
-.nav-list-item{
     display: flex;
-    border: 1px solid black;
-    height: 12vh;
-    padding: 0 10px;
-}
-
-.nav-list-item-logo {
-    display: flex;
-    height: 28vh;
-    padding: 0 10px;
-    border: 1px solid black;
-}
-
-img {
-    width: 35%;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 15vw;
+    height: 100vh;
+    background-color: darkgray;
 }
 
 .list-class{
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
-;
+    height: 13vh;
 }
+
+
 
 

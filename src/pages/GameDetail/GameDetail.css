@@ -16,6 +16,7 @@
     display: flex;
     height: 50vh;
     width: 85vw;
+    overflow: auto;
 }
 
 .footer-game-info {
@@ -46,7 +47,6 @@
 
 .rawg-pic{
     width: 20%;
-
 }
 /*.dropdown-content {*/
 /*    display: none;*/

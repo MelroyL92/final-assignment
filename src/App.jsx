@@ -19,7 +19,7 @@ function App() {
             <Route path="/" element={<Homepage/>}/>
             <Route path="/GameDetail/:id" element={<GameDetail/>}/>
             <Route path="/SearchResultPage" element={<SearchResultPage/>}/>
-            <Route path="/SpecificWishlist" element={<SpecificWishlist/>}/>
+            <Route path="/SpecificWishlist/:listName" element={<SpecificWishlist/>}/>
             <Route path="/WishlistOverview" element={<WishlistOverview/>}/>
             <Route path="/About" element={<About/>}/>
         </Routes>
