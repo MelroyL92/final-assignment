@@ -5,8 +5,9 @@ import './GameDetail.css'
 import GameTags from "../../components/GameTags/GameTags.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import CreateWishlist from "../../components/CreateWishlist/CreateWishlist.jsx";
-import {CirclesWithBar} from "react-loader-spinner";
 import Purifyer from "../../helpers/Purifyer/Purifyer.jsx";
+
+
 
 
 function GameDetail () {
@@ -21,12 +22,12 @@ function GameDetail () {
     useEffect(() => {
 
         async function fetchGameData() {
-            const apiKey = 'cfbdc29c24df4c6ead2de38a04292a7e'
+
             toggleError(false)
             setLoading(false)
 
             try {
-                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${apiKey}`)
+                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${import.meta.VITE_REACT_API_KEY}`)
                 console.log(response.data)
                 fetchGameInfo(response.data)
             } catch (e) {
@@ -68,21 +69,22 @@ function GameDetail () {
            </div>
        </section>
                 <section className="tag-wrapper">
-                    <article><GameTags gameInfo={gameInfo} type ='developer'/></article>
-                    <article><GameTags gameInfo={gameInfo} type ='publisher'/></article>
-                    <article><GameTags gameInfo={gameInfo} type ='tags'/></article>
-                    <article><GameTags gameInfo={gameInfo} type ='platform'/></article>
-                    {loading && <CirclesWithBar
-                        height="100"
-                        width="100"
-                        color="#4fa94d"
-                        wrapperStyle={{}}
-                        wrapperClass=""
-                        visible={true}
-                        outerCircleColor=""
-                        innerCircleColor=""
-                        barColor=""
-                        ariaLabel='circles-with-bar-loading'/>}
+                    <article><GameTags
+                        gameInfo={gameInfo}
+                        type ='developer'/>
+                    </article>
+                    <article><GameTags
+                        gameInfo={gameInfo}
+                        type ='publisher'/>
+                    </article>
+                    <article><GameTags
+                        gameInfo={gameInfo}
+                        type ='tags'/>
+                    </article>
+                    <article><GameTags
+                        gameInfo={gameInfo}
+                        type ='platform'/>
+                    </article>
                 </section>
             </div>
             <footer className="footer-game-info">

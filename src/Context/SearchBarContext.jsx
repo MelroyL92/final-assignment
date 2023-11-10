@@ -4,6 +4,7 @@ import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
 
+
 export const SearchBarContext = createContext();
 
 
@@ -20,13 +21,12 @@ const SearchBarContextProvider = ({children}) => {
         setSearchTerm(e.target.value);
     }
 
-    const apiKey = 'cfbdc29c24df4c6ead2de38a04292a7e'
     const handleSearch = async () => {
         setError(false);
         setLoader(false)
 
             try {
-                const response = await axios.get(`https://api.rawg.io/api/games?search=${searchTerm}&key=${apiKey}`);
+                const response = await axios.get(`https://api.rawg.io/api/games?search=${searchTerm}&key=${import.meta.VITE_REACT_API_KEY}`);
                 const responseData = response.data;
                 setGameResult(responseData)
                     navigate('/SearchResultPage');
@@ -36,7 +36,6 @@ const SearchBarContextProvider = ({children}) => {
                 setLoader(true);
             }
         }
-
 
     return (
 
