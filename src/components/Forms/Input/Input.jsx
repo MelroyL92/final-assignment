@@ -1,32 +1,20 @@
-import {useEffect, useState} from "react";
 
+const Input = ({inputType, inputName, inputLabel, inputId, validationRules, register, errors}) => {
 
-const Input = ({label, type, name, value,onChange}) => {
-
-        // const [comment, setComment] = useState(storedComment)
-        //
-        // useEffect( ()=> {
-        //
-        //     localStorage.setItem('comment', JSON.stringify(comment))
-        //
-        //
-        // },[comment])
-
-        const handleChange = (event) => {
-            const newValue = event.target.value;
-            setInputValue(newValue);
-        }
 
     return (
-        <div className="form-class">
-            <label htmlFor={name}>{label}:</label>
-            <input
-                type={type}
-                name={name}
-                value={value}
-                onChange={handleChange}
-            />
-        </div>
+        <>
+       <label htmlFor={inputId}>
+           {inputLabel}
+           <input
+           type={inputType}
+           id={inputId}
+           {...register(inputName,validationRules)}
+           />
+       </label>
+    {errors[inputName] && <p>
+        {errors[inputName].message}</p>}
+        </>
     );
 }
 
