@@ -19,7 +19,7 @@ function Homepage () {
         console.log(data);
         alert('Thank you for the feedback, I really appreciate it!');
         // You can call handleSearch or any other function with the form data here
-    };
+    }
 
     return (
         <main className="parent-container">
@@ -41,7 +41,7 @@ function Homepage () {
                 </div>
             </section>
             <footer className="footer-container">
-                <form onSubmit={handleSubmit(handleFormSubmit)}>
+                <form className="form-class" onSubmit={handleSubmit(handleFormSubmit)}>
                     <Input
                         inputType="text"
                         inputName="name"

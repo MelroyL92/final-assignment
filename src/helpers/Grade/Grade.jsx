@@ -1,24 +1,30 @@
-import {useState} from "react";
+
 import './Grade.css'
 
-function Grade () {
-    const [grade,setGrade] = useState(0)
+function Grade ({minRange,maxRange,changeHandler,type,grade}) {
 
-    const handleSliderChange = (event) => {
-        setGrade(parseInt(event.target.value, 10));
-    };
+
+        // if (grade < 4) {
+        //     return 'orange';
+        // } else if (grade < 7) {
+        //     return 'yellow';
+        // } else if (grade <10) {
+        //     return 'green';
+        // } else {
+        //     return "white"
+        // }
+
+
 
     return (
         <div className="circle-container">
-            <div className="circle">
-                {grade}
-            </div>
+            <p className="circle">{grade}</p>
             <input
-            type="range"
-            min="0"
-            max="10"
+            type={type}
             value={grade}
-            onChange={handleSliderChange}
+            min={minRange}
+            max={maxRange}
+            onChange={changeHandler}
             />
         </div>
 
