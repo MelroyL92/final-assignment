@@ -8,6 +8,7 @@ import Grade from "../../helpers/Grade/Grade.jsx";
 import Button from "../../components/Forms/Button/Button.jsx";
 import Input from "../../components/Forms/Input/Input.jsx";
 import {useForm} from "react-hook-form";
+import {AuthContext} from "../../Context/AuthContext.jsx";
 
 function SpecificWishlist() {
     const { listName } = useParams();
@@ -17,7 +18,7 @@ function SpecificWishlist() {
     const [filterSearch, setFilterSearch] = useState('');
     const [editMode, setEditMode] = useState({});
     const [commentsAndGrades, setCommentsAndGrades] = useState({}); // Define commentsAndGrades state
-
+    const {isAuthenticated, logout} = useContext(AuthContext)
 
     //logic for the comments for the specific wishlist, similar to the overview
     const handleEditToggle = (gameId) => {
@@ -35,7 +36,7 @@ function SpecificWishlist() {
     };
 
     const handleSpecificWishlistSubmit = (gameId) => {
-        // Your logic to handle form submission
+
         const updatedCommentsAndGrades = {
             ...commentsAndGrades,
             [gameId]: {
@@ -43,7 +44,6 @@ function SpecificWishlist() {
                 grade: grade[gameId] || 0,
             },
         };
-
         setCommentsAndGrades(updatedCommentsAndGrades);
         localStorage.setItem(`wishlist-comment-${listName}`, JSON.stringify(updatedCommentsAndGrades));
         alert('Your comments have been saved');
@@ -70,7 +70,6 @@ function SpecificWishlist() {
         game.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
         (commentsAndGrades[game.id]?.grade && commentsAndGrades[game.id]?.grade.toString() === filterSearch)
     );
-    console.log(filteredGames)
 
     const handleSearch = (searchTerm) => {
         setFilterSearch(searchTerm);
@@ -87,15 +86,24 @@ function SpecificWishlist() {
                 <NavLinks to="/SearchResultPage" iconSrc="../src/assets/magnifying-glass-thin.svg"
                           altText="magnifying glass icon" text="Search"/>
                 <NavLinks to="/About" iconSrc="../src/assets/info-thin.svg" altText="about icon" text="About"/>
-                <NavLinks to="/Login" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="Login"/>
-                <NavLinks to="/Register" iconSrc="../src/assets/alien-thin.svg" altText="register icon"
-                          text="Register"/>
+                {isAuthenticated ? (
+                    <>
+                        <NavLinks to="/ProfilePage" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="profile" />
+                        <Button className="button-class-nav" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
+                    </>
+                ) : (
+                    <>
+                        <NavLinks to="/Login" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="Login" />
+                        <NavLinks to="/Register" iconSrc="../src/assets/alien-thin.svg" altText="register icon" text="Register" />
+                    </>
+                )}
             </nav>
             <div className="page-wrapper">
                 <div className="head-container">
                     <h1>{filteredGames.name}</h1>
                     <SearchBar
                         source="../src/assets/rawg-logo_750x430.jpg"
+                        iconSrc="../src/assets/magnifying-glass-thin.svg"
                         clickHandler={(event) => setFilterSearch(event.target.value)}
                         onSearch={handleSearch}
                     />

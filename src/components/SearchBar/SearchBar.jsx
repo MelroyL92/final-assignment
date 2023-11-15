@@ -1,23 +1,45 @@
 
 import './SearchBar.css'
-import {useContext} from 'react';
 import {SearchBarContext} from "../../Context/SearchBarContext.jsx";
-
-function SearchBar() {
-    const {searchTerm, handleSearch, handleChange} = useContext(SearchBarContext);
+import {useContext, useState} from "react";
 
 
+function SearchBar({ source, searchValue, iconSrc, clickHandler }) {
+    const { handleSearch } = useContext(SearchBarContext);
+    const [selectedParam, setSelectedParam]= useState('')
+
+    function submit(e) {
+        e.preventDefault()
+        handleSearch(selectedParam)
+
+    }
 
     return (
-        <div className="searchbar-container">
-            <form>
-                <input className="searchbar-style" type="text" value={searchTerm} onChange={handleChange} />
-                <button className="button-style" type="button" onClick={handleSearch}>Search</button>
+        <div className="parent-container-searchbar">
+            <form onSubmit={submit} className="searchbar-container">
+                <input
+                    type="text"
+                    value={searchValue}
+                    onChange={clickHandler}
+                    placeholder="Search..."
+                />
+                <select value={selectedParam} onChange={(e) => setSelectedParam(e.target.value)}>
+                    <option value="name">Name</option>
+                    <option value="developer">Developer</option>
+                    <option value="genre">Genre</option>
+                    <option value="publisher">Publisher</option>
+                </select>
+                <button type="submit">
+                    <img className="button-image" src={iconSrc} alt="search icon" />
+                </button>
             </form>
-            <span><img className="icon-wrapper" src="src/assets/rawg-logo_750x430.jpg" alt="API logo" /></span>
+            <span>
+        <img className="icon-wrapper" src={source} alt="API logo" />
+      </span>
         </div>
     );
 }
 
-
 export default SearchBar;
+
+import './SearchBar.css'

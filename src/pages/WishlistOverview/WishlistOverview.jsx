@@ -39,20 +39,20 @@ function WishlistOverview() {
         }
     }, [wishlist, filterSearch]);
 
-    useEffect(() => {
-        try {
-            const storedComments = JSON.parse(localStorage.getItem(`comments-${selectedList}`)) || {};
-            setComments(storedComments);
-            // ... (existing code)
-        } catch (e) {
-            console.error(e);
-        }
-    }, [wishlist, filterSearch, selectedList]);
-
     function handleSearch() {
         setFilterSearch(filterSearch);
         setSelectedList(null);
     }
+
+    // made to handle the forminputs and store it to local storage or retrieve it when needed.
+    useEffect(() => {
+        try {
+            const storedComments = JSON.parse(localStorage.getItem(`comments-${selectedList}`)) || {};
+            setComments(storedComments);
+        } catch (e) {
+            console.error(e);
+        }
+    }, [wishlist, filterSearch, selectedList]);
 
     const handleWishlistCommentSubmit = (data, listName) => {
         const updatedComments = {
@@ -75,6 +75,9 @@ function WishlistOverview() {
         setEditMode(false);
         setEditedListName(null);
     };
+
+
+
 
     return (
         <main className="parent-container">
@@ -100,6 +103,7 @@ function WishlistOverview() {
                 <div className="head-container">
                     <h1>Wishlist</h1>
                     <SearchBar source="src/assets/rawg-logo_750x430.jpg"
+                               iconSrc="src/assets/magnifying-glass-thin.svg"
                                clickHandler={(event) => setFilterSearch(event.target.value)}
                                onSearch={handleSearch}
                     />
@@ -114,6 +118,7 @@ function WishlistOverview() {
                 <Link to={`/SpecificWishlist/${titleList.name}`}>
                   <h2>{titleList.name}</h2>
                 </Link>
+                  <p>Total Games: {titleList.games.length}</p>
               </span>
                             <ul>
                                 {titleList.games.map((game) => (
