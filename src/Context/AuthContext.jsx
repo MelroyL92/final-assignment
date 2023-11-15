@@ -1,7 +1,7 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {jwtDecode} from "jwt-decode";
+
 
 export const AuthContext = createContext({});
 
@@ -14,12 +14,13 @@ function AuthContextProvider({children}) {
         status: 'pending',
     });
 
+
     useEffect( ()=> {
 
       const token =  localStorage.getItem('token')
 
         if (token) {
-             login(token)
+            void login(token)
         } else {
             toggleIsAuth({
                 ...isAuth,
@@ -36,9 +37,8 @@ function AuthContextProvider({children}) {
 
     async function login (token) {   // hier wordt de token ontvangen vanuit de Login page
 
-        localStorage.setItem('token', token)// accestoken opslaan in de local storage. Controleer nog wel de key vanuit de api e.d.
-        // const info = jwtDecode(token)
-        // const userId = info.sub  // haalt de info vanuit de jwt code
+        localStorage.setItem('token', token)
+
 
         try {
             const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user/`, {
@@ -52,9 +52,10 @@ function AuthContextProvider({children}) {
             toggleIsAuth({
                 isAuthenticated: true,
                 user: {
-                    username: response.data.username, // controleren met api informatie (hoe krijgen we dit terug?)
-                    email: response.data.email, // controleren met api informatie (hoe krijgen we dit terug?)
-                    id: response.data.id, // controleren met api informatie (hoe krijgen we dit terug?)
+                    username: response.data.username,
+                    email: response.data.email,
+                    id: response.data.id,
+                    profilePicture: response.data.profilePicture
                 },
                 status: 'done',
 
@@ -70,9 +71,8 @@ function AuthContextProvider({children}) {
 
         navigate('/ProfilePage')
         console.log("de gebruiker is ingelogd")
-
-
     }
+
 
     function logout() {
         console.log("de gebruiker is uitgelogd")
@@ -83,6 +83,10 @@ function AuthContextProvider({children}) {
         });
         navigate('/');
     }
+
+
+
+
 
     const contextData = {
        ...isAuth,
