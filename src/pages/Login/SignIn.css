@@ -1,0 +1,13 @@
+
+.login-wrapper{
+    display: flex;
+    height: 20vh;
+    width:25vw;
+}
+
+.password-icon-login {
+    display: flex;
+    transform: translateY(-140%) translateX(860%);
+    width: 10%;
+    position: sticky;
+}

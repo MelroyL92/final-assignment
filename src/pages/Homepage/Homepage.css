@@ -1,0 +1,26 @@
+
+.section-container{
+    display: flex;
+    width: 85vw;
+    height:77vh;
+}
+
+.img-searchbar-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0px 10px 0px;
+    align-items: center;
+}
+
+.footer-container{
+    display: flex;
+    height: 14vh;
+    max-width: calc(100% - 12vw);
+    justify-content: center;
+}
+
+.form-home{
+    margin: 0 0 5px;
+    padding: 0 0 0 5px;
+    border-radius: 12px;
+}

@@ -1,0 +1,52 @@
+
+.header-class-game-info {
+    display: flex;
+    flex-basis: 100%;
+    height: 35vh;
+    justify-content: space-evenly;
+    margin: 0 0 10px 0;
+}
+
+.mid-section-wrapper{
+    display: flex;
+    flex-direction: row;
+}
+
+.game-info-details {
+    display: flex;
+    height: 55vh;
+    width: 85vw;
+    overflow: auto;
+}
+
+.footer-game-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+
+.tag-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    overflow: auto;
+    height: 55vh;
+}
+
+.buttons-game-page {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+}
+
+.button-styling{
+    padding: 5px;
+    border: 1px solid black;
+    margin: 5px;
+    border-radius: 12px;
+}
+
+.rawg-pic{
+    width: 20%;
+}

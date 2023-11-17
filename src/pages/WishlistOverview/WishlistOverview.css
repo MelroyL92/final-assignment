@@ -1,0 +1,10 @@
+.page-wrapper {
+    display: flex;
+    width: 85vw;
+    align-items: center;
+}
+
+.result-class {
+    height: 70vh;
+    overflow: auto;
+}

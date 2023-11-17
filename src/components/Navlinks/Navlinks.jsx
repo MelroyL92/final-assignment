@@ -1,22 +1,28 @@
 import {Link} from "react-router-dom"
+import './Navlinks.css'
 
 
-
-function Navlinks (){
+function NavLinks ({ to, iconSrc, altText, text }){
 
     return (
-        <nav className="nav-links-parent">
+        <div className="nav-class">
             <ul>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="list">List</Link></li>
-                <li><Link to="Search">Search</Link></li>
-                <li><Link to="About">About</Link></li>
-                <li><Link to="Login">Login</Link></li>
-                <li><Link to="Register">Register</Link></li>
+                <li className="nav-list-container">
+                    <Link className="Link-style" to={to}>
+                        <div className="list-class">
+                            {text}
+                            <span className="icon-wrapper">
+                                <img src={iconSrc} alt={altText} />
+                            </span>
+                        </div>
+                    </Link>
+                </li>
             </ul>
-
-        </nav>
-    )
+        </div>
+    );
 }
 
-export default Navlinks
+
+
+
+export default NavLinks
