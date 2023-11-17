@@ -13,12 +13,13 @@ import {AuthContext} from "../../Context/AuthContext.jsx";
 function SpecificWishlist() {
     const { listName } = useParams();
     const { wishlist } = useContext(WishlistContext);
+    const {isAuthenticated, logout} = useContext(AuthContext)
     const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm();
     const [grade, setGrade] = useState(0);
     const [filterSearch, setFilterSearch] = useState('');
     const [editMode, setEditMode] = useState({});
     const [commentsAndGrades, setCommentsAndGrades] = useState({}); // Define commentsAndGrades state
-    const {isAuthenticated, logout} = useContext(AuthContext)
+
 
     //logic for the comments for the specific wishlist, similar to the overview
     const handleEditToggle = (gameId) => {
@@ -71,9 +72,7 @@ function SpecificWishlist() {
         (commentsAndGrades[game.id]?.grade && commentsAndGrades[game.id]?.grade.toString() === filterSearch)
     );
 
-    const handleSearch = (searchTerm) => {
-        setFilterSearch(searchTerm);
-    };
+
 
 
 
@@ -89,7 +88,7 @@ function SpecificWishlist() {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="button-class-nav" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
+                        <Button className="nav-button" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="../src/assets/sign-out-thin.svg" altText="sign-out"/>
                     </>
                 ) : (
                     <>
@@ -98,14 +97,15 @@ function SpecificWishlist() {
                     </>
                 )}
             </nav>
+
+
             <div className="page-wrapper">
                 <div className="head-container">
-                    <h1>{filteredGames.name}</h1>
+                    <h1>{specificList.name}</h1>
                     <SearchBar
                         source="../src/assets/rawg-logo_750x430.jpg"
                         iconSrc="../src/assets/magnifying-glass-thin.svg"
                         clickHandler={(event) => setFilterSearch(event.target.value)}
-                        onSearch={handleSearch}
                     />
                 </div>
                 <ul>

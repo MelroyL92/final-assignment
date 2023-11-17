@@ -6,12 +6,13 @@ import Button from "../Forms/Button/Button.jsx";
 function ImageEdit () {
 
     const [error, toggleError] = useState(false)
-    const token =  localStorage.getItem('token')
     const [image, setImage] = useState("")
+    const [isEditing, setIsEditing] = useState(false);
+
+    const token =  localStorage.getItem('token')
 
 
     async function addImage () {
-        console.log(token)
         try {
             const response = await axios.post(
                 'https://frontend-educational-backend.herokuapp.com/api/user/image',
@@ -24,16 +25,11 @@ function ImageEdit () {
                     },
                 }
             );
-            console.log(response);
             alert('You have now edited your information');
         } catch (e) {
             toggleError(true);
         }
     }
-
-
-
-
 
     function convertToBase64(e) {
         const reader = new FileReader();
@@ -41,32 +37,35 @@ function ImageEdit () {
 
         reader.onload = () => {
             setImage(reader.result);
-            console.log(image); // Move the console.log inside the onload callback
+            setIsEditing(true);
         };
 
         reader.onerror = error => {
-            console.log("error", error);
+            console.error("error", error);
         }
     }
 
+    const handleEditClick = () => {
+        setIsEditing(!isEditing);
+    };
 
 
     return(
         <div>
-            <div>
-                <input
-                    accept="image/*"
-                    type="file"
-                    onChange={convertToBase64}
-                />
-                {image && <img src={image} alt="profile-image" width={40} height={40}/> }
-            </div>
-        <Button type="submit" label="upload image" clickHandler={addImage}/>
-
-
+            {isEditing ? (
+                <div>
+                    <input accept="image/*" type="file" onChange={convertToBase64} className="upload-button" />
+                    {image && <img src={image} alt="profile-image" width={40} height={40} />}
+                    <Button  className="overlay-button" type="submit" label="Upload Image" clickHandler={addImage} />
+                    <Button  className="overlay-button" label="Edit Image" clickHandler={handleEditClick} />
+                </div>
+            ) : (
+                <button  className="overlay-button" onClick={handleEditClick}>Edit Image</button>
+            )}
         </div>
-    )
-
+    );
 }
+
+
 
 export default ImageEdit

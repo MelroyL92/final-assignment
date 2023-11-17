@@ -4,26 +4,26 @@ import {SearchBarContext} from "../../Context/SearchBarContext.jsx";
 import {useContext, useState} from "react";
 
 
-function SearchBar({ source, searchValue, iconSrc, clickHandler }) {
-    const { handleSearch } = useContext(SearchBarContext);
+function SearchBar({ source, iconSrc, clickHandler }) {
+    const { handleSearch , searchTerm} = useContext(SearchBarContext);
     const [selectedParam, setSelectedParam]= useState('')
 
     function submit(e) {
         e.preventDefault()
         handleSearch(selectedParam)
-
     }
+
 
     return (
         <div className="parent-container-searchbar">
             <form onSubmit={submit} className="searchbar-container">
                 <input
                     type="text"
-                    value={searchValue}
+                    value={searchTerm}
                     onChange={clickHandler}
                     placeholder="Search..."
                 />
-                <select value={selectedParam} onChange={(e) => setSelectedParam(e.target.value)}>
+                <select className="select-class" value={selectedParam} onChange={(e) => setSelectedParam(e.target.value)}>
                     <option value="name">Name</option>
                     <option value="developer">Developer</option>
                     <option value="genre">Genre</option>

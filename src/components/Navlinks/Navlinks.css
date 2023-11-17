@@ -10,6 +10,27 @@
     border: 3px outset black;
 }
 
+.nav-class {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 15vw;
+    height: 100vh;
+    background: rgb(164, 160, 157);
+    background: linear-gradient(90deg, rgba(164, 160, 157, 1) 30%, rgba(80, 78, 78, 1) 98%);
+}
+
+
+.nav-button {
+    display: flex;
+    justify-content: space-around;
+    background: rgb(164, 160, 157);
+    background: linear-gradient(90deg, rgba(164, 160, 157, 1) 30%, rgba(80, 78, 78, 1) 98%);
+    border-radius: 25%;
+    margin: 5px 5px 0;
+    border: 3px outset black;
+    cursor: pointer;
+}
 
 
 

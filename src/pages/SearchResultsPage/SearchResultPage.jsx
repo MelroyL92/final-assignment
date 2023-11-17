@@ -9,7 +9,7 @@ import {AuthContext} from "../../Context/AuthContext.jsx";
 
 
 function SearchResultPage () {
-    const {gameResult, handleSearch,searchTerm,handleChange} = useContext(SearchBarContext);
+    const {gameResult, handleSearch,handleChange, searchTerm} = useContext(SearchBarContext);
     const {isAuthenticated, logout} = useContext(AuthContext)
 
 
@@ -25,7 +25,7 @@ function SearchResultPage () {
                     {isAuthenticated ? (
                         <>
                             <NavLinks to="/ProfilePage" iconSrc="src/assets/user-thin.svg" altText="login icon" text="profile" />
-                            <Button className="button-class-nav" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
+                            <Button className="nav-button" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
                         </>
                     ) : (
                         <>

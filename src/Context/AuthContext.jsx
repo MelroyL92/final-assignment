@@ -39,7 +39,6 @@ function AuthContextProvider({children}) {
 
         localStorage.setItem('token', token)
 
-
         try {
             const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user/`, {
                 headers: {
@@ -70,12 +69,12 @@ function AuthContextProvider({children}) {
         }
 
         navigate('/ProfilePage')
-        console.log("de gebruiker is ingelogd")
+        console.log("de gebruiker is ingelogd") // zorgen dat de gebruiker een melding krijgt, daarna verwijderen
     }
 
 
     function logout() {
-        console.log("de gebruiker is uitgelogd")
+        console.log("de gebruiker is uitgelogd") // zorgen dat de gebruiker een melding krijgt, daarna verwijderen
         toggleIsAuth({
             isAuthenticated: false,
             user: 'null',

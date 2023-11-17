@@ -1,4 +1,4 @@
-import {createContext, useContext, useState} from "react";
+import {createContext, useState} from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 
@@ -14,9 +14,14 @@ const SearchBarContextProvider = ({children}) => {
     const [gameResult, setGameResult] = useState([])
     const [loader, setLoader] = useState(false)
 
+    const handleChange = (e) => {
+        setSearchTerm(e.target.value);
+        console.log(searchTerm)
+    }
+
 
     const handleSearch = async (param) => {
-
+        console.log(searchTerm)
         setError(false);
         setLoader(false);
 
@@ -30,23 +35,21 @@ const SearchBarContextProvider = ({children}) => {
             case 'developer':
                 endpoint = `developers?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
-            case 'genre':
-                endpoint = `genres?search=${searchTerm}&key=${import.meta.env.VITE_REACT_API_KEY}`;
+            case 'genre': // lastige is dat je hier alleen met id's kunt werken of dus zonder searchterm en de /
+                endpoint = `genres/${searchTerm}?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
             case 'publisher':
                 endpoint = `publishers?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
-            default:
-                // Handle default case
+            default: // in de default ook degene van name gezet omdat op de 1 of andere manier soms de eerste keer een leeg object terug kwam
+                endpoint = `games?search=${searchTerm}&key=${import.meta.env.VITE_REACT_API_KEY}`
                 break;
         }
         const apiUrl = baseUrl + endpoint;
-        console.log('Constructed API URL:', apiUrl);
 
         try {
             const response = await axios.get(apiUrl);
-            console.log(response)
-            const responseData = response.data;
+            const responseData = response.data; // hiervoor een console.log verwijderd, werkt het nog?
             setGameResult(responseData);
             navigate('/SearchResultPage');
         } catch (e) {
@@ -58,7 +61,7 @@ const SearchBarContextProvider = ({children}) => {
 
     return (
 
-        <SearchBarContext.Provider value={{gameResult, setGameResult , handleSearch}}>
+        <SearchBarContext.Provider value={{gameResult, setGameResult , handleSearch, setSearchTerm, handleChange}}>
             {children}
         </SearchBarContext.Provider>
 

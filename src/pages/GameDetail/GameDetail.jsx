@@ -4,7 +4,7 @@ import {Link, useParams} from "react-router-dom";
 import './GameDetail.css'
 import GameTags from "../../components/GameTags/GameTags.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
-import CreateWishlist from "../../components/CreateWishlist/CreateWishlist.jsx";
+import CreateAndAddToWishlist from "../../components/CreateAndAddToWishlist/CreateAndAddToWishlist.jsx";
 import Purifyer from "../../helpers/Purifyer/Purifyer.jsx";
 
 
@@ -27,9 +27,9 @@ function GameDetail () {
             setLoading(false)
 
             try {
-                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${import.meta.VITE_REACT_API_KEY}`)
-                console.log(response.data)
+                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_API_KEY}`)
                 fetchGameInfo(response.data)
+                console.log(gameInfo)
             } catch (e) {
                 console.error(e)
                 toggleError(true)
@@ -40,8 +40,12 @@ function GameDetail () {
         void fetchGameData()
     },[id]);
 
+    // tweede useEffect om gameInfo te updaten.
+    useEffect(()=> {
+    },[gameInfo])
 
 
+// main class heeft nu de code verpest. Mocht ik het niet opgelost krijgen is dat dus de issue;
     return (
         <main>
         <header className="header-class-game-info">
@@ -55,7 +59,6 @@ function GameDetail () {
                    <h1>{gameInfo.name}</h1>
                    <p> Released:{gameInfo.released}</p>
                     <Purifyer gameInfo={gameInfo}/>
-                   {/*to show if there is no description available*/}
                    {!gameInfo.description && <p>There is no description for {gameInfo.name}</p>}
                </div>
                <div>
@@ -91,7 +94,7 @@ function GameDetail () {
                 <div className="buttons-game-page">
                     <Link className="button-styling" to="/SearchResultPage">back</Link>
                     <Link className="button-styling" to="/">Home</Link>
-                    <CreateWishlist/>
+                    <CreateAndAddToWishlist/>
                     <img className="rawg-pic" src="../../../src/assets/rawg-logo_750x430.jpg" alt="API logo"/>
                 </div>
             </footer>

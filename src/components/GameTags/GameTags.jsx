@@ -1,13 +1,14 @@
 import {useContext, useEffect, useState} from 'react';
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import './GameTags.css'
-import {CirclesWithBar} from "react-loader-spinner";
 
 
 
 function GameTags ({type}) {
     const [tagInfo, setTagInfo] = useState(null);
     const {gameInfo} = useContext(GameInfoContext)
+
+
 
 
     useEffect(() => {

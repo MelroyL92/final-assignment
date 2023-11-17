@@ -1,0 +1,11 @@
+.form-class{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+}
+
+.register-wrapper{
+    display: flex;
+    height: 20vh;
+    width:25vw;
+}

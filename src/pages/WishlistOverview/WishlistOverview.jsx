@@ -8,6 +8,7 @@ import {useContext, useEffect, useState} from "react";
 import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
+import WishlistOverviewPicture from "../../components/WishlistOverviewPicture/WishlistOverviewPicture.jsx";
 
 
 function WishlistOverview() {
@@ -44,7 +45,7 @@ function WishlistOverview() {
         setSelectedList(null);
     }
 
-    // made to handle the forminputs and store it to local storage or retrieve it when needed.
+    // made to handle the form-inputs and store it to local storage or retrieve it when needed.
     useEffect(() => {
         try {
             const storedComments = JSON.parse(localStorage.getItem(`comments-${selectedList}`)) || {};
@@ -89,7 +90,7 @@ function WishlistOverview() {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="button-class-nav" type="button" clickHandler={logout} name="Logout"
+                        <Button className="nav-button" type="button" clickHandler={logout} name="Logout"
                                 label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out" />
                     </>
                 ) : (
@@ -101,105 +102,106 @@ function WishlistOverview() {
             </nav>
             <div className="page-wrapper">
                 <div className="head-container">
-                    <h1>Wishlist</h1>
+                    <h1>Wishlists</h1>
                     <SearchBar source="src/assets/rawg-logo_750x430.jpg"
                                iconSrc="src/assets/magnifying-glass-thin.svg"
                                clickHandler={(event) => setFilterSearch(event.target.value)}
                                onSearch={handleSearch}
                     />
                 </div>
-                <section className="main-wrapper">
-                    {filteredWishlist.map((titleList) => (
-                        <div key={titleList.name} className="wishlist-overview-wrapper">
-              <span className="image-wrapper-wishlist">
-                <img src="https://placehold.in/300x200@2x.png/dark" alt="placeholder_image" />
-              </span>
-                            <span>
-                <Link to={`/SpecificWishlist/${titleList.name}`}>
-                  <h2>{titleList.name}</h2>
-                </Link>
-                  <p>Total Games: {titleList.games.length}</p>
-              </span>
-                            <ul>
-                                {titleList.games.map((game) => (
-                                    <li key={game.id}></li>
-                                ))}
-                            </ul>
-                            {comments && comments[`subtitle-${titleList.name}`] && comments[`comment-${titleList.name}`] ? (
-                                <div className="form-class">
-                                    {editMode && editedListName === titleList.name ? (
-                                        <>
-                                            <h4>Subtitle:</h4>
-                                            <Input
-                                                inputType="text"
-                                                inputName={`subtitle-${titleList.name}`}
-                                                inputId={`subtitle-field-${titleList.name}`}
-                                                defaultValue={comments[`subtitle-${titleList.name}`]}
-                                                register={register}
-                                                errors={errors}
-                                            />
-                                            <h4>Comment:</h4>
-                                            <Input
-                                                inputType="textarea"
-                                                inputName={`comment-${titleList.name}`}
-                                                inputId={`comment-field-${titleList.name}`}
-                                                defaultValue={comments[`comment-${titleList.name}`]}
-                                                register={register}
-                                                errors={errors}
-                                            />
-                                            <Button type="submit" label="Save Changes" clickHandler={() => handleWishlistCommentSubmit(getValues(), titleList.name)} />
-                                            <Button type="button" label="Cancel" clickHandler={() => handleCancelEdit()} />
-                                        </>
-                                    ) : (
-                                        <>
-                                            <h4>Subtitle:</h4>
-                                            <p>{comments[`subtitle-${titleList.name}`]}</p>
-                                            <h4>Comment:</h4>
-                                            <p>{comments[`comment-${titleList.name}`]}</p>
-                                            <Button type="button" label="Edit" clickHandler={() => handleEditButtonClick(titleList.name)} />
-                                        </>
-                                    )}
-                                </div>
-                            ) : (
-                                <div className="parent-container-form">
-                                    <form key={titleList.name} onSubmit={handleSubmit((data) => handleWishlistCommentSubmit(data, titleList.name))}>
+            <section className="result-class">
+                {filteredWishlist.map((titleList) => (
+                    <div key={titleList.name} className="wishlist-overview-wrapper">
+                            <WishlistOverviewPicture wishlistName={titleList.name}/>
+                            <div>
+                            <Link to={`/SpecificWishlist/${titleList.name}`}>
+                            <h2>{titleList.name}</h2>
+                            </Link>
+                            <p>Total Games: {titleList.games.length}</p>
+                            </div>
+                        <ul>
+                            {titleList.games.map((game) => (
+                                <li key={game.id}></li>
+                            ))}
+                        </ul>
+                        {comments && comments[`subtitle-${titleList.name}`] && comments[`comment-${titleList.name}`] ? (
+                            <div className="form-class">
+                                {editMode && editedListName === titleList.name ? (
+                                    <>
+                                        <h4>Subtitle:</h4>
                                         <Input
                                             inputType="text"
                                             inputName={`subtitle-${titleList.name}`}
                                             inputId={`subtitle-field-${titleList.name}`}
-                                            inputLabel="Subtitle"
-                                            validationRules={{
-                                                required: {
-                                                    value: true,
-                                                    message: "please fill in a subtitle",
-                                                },
-                                            }}
+                                            defaultValue={comments[`subtitle-${titleList.name}`]}
                                             register={register}
                                             errors={errors}
                                         />
+                                        <h4>Comment:</h4>
                                         <Input
                                             inputType="textarea"
                                             inputName={`comment-${titleList.name}`}
                                             inputId={`comment-field-${titleList.name}`}
-                                            inputLabel="Comment:"
-                                            validationRules={{
-                                                required: {
-                                                    value: true,
-                                                    message: "please fill in a description of the list",
-                                                },
-                                            }}
+                                            defaultValue={comments[`comment-${titleList.name}`]}
                                             register={register}
                                             errors={errors}
                                         />
-                                        <Button type="submit" name={`wishlist-${titleList.name}`} label="Submit information" />
-                                    </form>
-                                </div>
-                            )}
-                        </div>
-                    ))}
-                </section>
+                                        <Button type="submit" label="Save Changes" clickHandler={() => handleWishlistCommentSubmit(getValues(), titleList.name)} />
+                                        <Button type="button" label="Cancel" clickHandler={() => handleCancelEdit()} />
+                                    </>
+                                ) : (
+                                    <>
+                                        <h4>Subtitle:</h4>
+                                        <p>{comments[`subtitle-${titleList.name}`]}</p>
+                                        <h4>Comment:</h4>
+                                        <p>{comments[`comment-${titleList.name}`]}</p>
+                                        <Button type="button" label="Edit" clickHandler={() => handleEditButtonClick(titleList.name)} />
+                                    </>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="parent-container-form">
+                                <form key={titleList.name} onSubmit={handleSubmit((data) => handleWishlistCommentSubmit(data, titleList.name))}>
+                                    <Input
+                                        inputType="text"
+                                        inputName={`subtitle-${titleList.name}`}
+                                        inputId={`subtitle-field-${titleList.name}`}
+                                        inputLabel="Subtitle"
+                                        validationRules={{
+                                            required: {
+                                                value: true,
+                                                message: "please fill in a subtitle",
+                                            },
+                                        }}
+                                        register={register}
+                                        errors={errors}
+                                    />
+                                    <Input
+                                        inputType="textarea"
+                                        inputName={`comment-${titleList.name}`}
+                                        inputId={`comment-field-${titleList.name}`}
+                                        inputLabel="Comment:"
+                                        validationRules={{
+                                            required: {
+                                                value: true,
+                                                message: "please fill in a description of the list",
+                                            },
+                                        }}
+                                        register={register}
+                                        errors={errors}
+                                    />
+                                    <Button type="submit" name={`wishlist-${titleList.name}`} label="Submit information" />
+                                </form>
+                            </div>
+                        )}
+                    </div>
+                ))}
+            </section>
             </div>
         </main>
+
+
+
     );
 }
 

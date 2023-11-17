@@ -1,13 +1,16 @@
 import {useContext, useState} from "react";
 import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
-import './CreateWishlist.css'
+import './CreateAndAddToWishlist.css'
+import Button from "../Forms/Button/Button.jsx";
 
-function CreateWishlist () {
+
+function CreateAndAddToWishlist () {
     const { wishlist, setWishlist} = useContext(WishlistContext)
     const {gameInfo} = useContext(GameInfoContext)
     const [selectedWishlist, setSelectedWishlist] = useState('');
     const [newWishlistName, setNewWishlistName] = useState('');
+    const [notification, setNotification] = useState('');
 
     const handleAddToWishlist = () => {
         if (selectedWishlist && gameInfo) {
@@ -22,6 +25,9 @@ function CreateWishlist () {
             });
 
             setWishlist(updatedWishlists);
+            setNotification(`${gameInfo.name} has been added to ${selectedWishlist}`);
+        } else {
+            setNotification('Please select a wishlist before adding the game.');
         }
     };
 
@@ -40,30 +46,35 @@ function CreateWishlist () {
 
             setWishlist([...wishlist, newWishlist]); // Update the wishlist state
 
-            // Clear the input field
             setNewWishlistName('');
+            setNotification(`A new list has been created, and ${gameInfo.name} has been added to the list.`);
+        } else {
+            setNotification('Please enter a name for the new wishlist.');
         }
-    }
+    };
+
 
     return (
+        <div>
         <div className="button-container">
-                <select value={selectedWishlist} onChange={(e) => setSelectedWishlist(e.target.value)}>
+            <select value={selectedWishlist} onChange={(e) => setSelectedWishlist(e.target.value)}>
                     <option value="">Select Wishlist</option>
                     {wishlist.map((wishlist) => (
                         <option key={wishlist.name} value={wishlist.name}>{wishlist.name}</option>
                     ))}
                 </select>
-                <button onClick={handleAddToWishlist}>Add to Wishlist</button>
-                <input
+            <button onClick={handleAddToWishlist}>Add to wishlist</button>
+            <input
                     type="text"
                     value={newWishlistName}
                     onChange={(e) => setNewWishlistName(e.target.value)}
                     placeholder="Create a new wishlist"
                 />
-                <button onClick={handleCreateWishlist}>Create New Wishlist</button>
-
+            <button onClick={handleCreateWishlist}>Create new wishlist</button>
+        </div>
+            {notification && <div className="notification">{notification}</div>}
         </div>
     );
 }
 
-export default CreateWishlist
+export default CreateAndAddToWishlist

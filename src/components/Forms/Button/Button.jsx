@@ -1,38 +1,22 @@
+import './Button.css'
 
 
 
 
-
-const Button = ({type,className,onClick,id, name}) => {
-
-
-
-    const handleClick = () => {
-
-        switch (name) {
-
-            case "wishlist" :
-                alert("Information has been stored in local storage")
-                break;
-            case "feedback form":
-                alert("Thank you for the feedback, i really appreciate it!")
-                break;
-            default:
-                alert("the information has been submitted")
-        }
-    }
-
-
+const Button = ({type,className,id, name, clickHandler, label, iconSrc, altText}) => {
 
     return (
         <button
         type={type}
         className={className}
-        onClick={handleClick}
+        onClick={clickHandler}
         id={id}
         name={name}
         >
-        Button
+            <span className="button-span">
+            <span>{label}</span>
+            {iconSrc &&<span className="icon-wrapper">  <img src={iconSrc} alt={altText} className="icon-wrapper" /></span>}
+            </span>
         </button>
 
     )

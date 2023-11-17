@@ -1,13 +1,6 @@
-.header-class {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-}
-
-.text-class {
-    width: 100vw;
+.text-class{
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }

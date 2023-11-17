@@ -5,21 +5,21 @@ import Input from "../../components/Forms/Input/Input.jsx";
 import Button from "../../components/Forms/Button/Button.jsx";
 import NavLinks from "../../components/Navlinks/Navlinks.jsx";
 import {useForm} from "react-hook-form";
-
+import "./SignIn.css"
 
 function SignIn () {
     const {login} = useContext(AuthContext)
     const [error, toggleError] = useState(false);
     const {register, handleSubmit, formState: {errors}} = useForm();
+    const [visible, setVisible] = useState(false)
 
     async function handleFormSubmit(data) {
 
-        try {           // api nog controleren of dit klopt!
+        try {
             const response = await axios.post(`https://frontend-educational-backend.herokuapp.com/api/auth/signin`, {
-                username: data.username, // hier zal een variabele voor gebruikt moeten worden!
-                password: data.password, // ook hier zal een variabele voor gebruikt moeten worden!
+                username: data.username,
+                password: data.password,
             });
-            console.log(response)
             login(response.data.accessToken)
         } catch (e) {
             toggleError(true)
@@ -39,11 +39,13 @@ function SignIn () {
                 <NavLinks to="/Login" iconSrc="src/assets/user-thin.svg" altText="login icon" text="Login"/>
                 <NavLinks to="/Register" iconSrc="src/assets/alien-thin.svg" altText="register icon" text="Register"/>
             </nav>
-            <div className="img-searchbar-container">
+            <section className="img-searchbar-container">
                 <div className="image">
-                    <img className="homepage-image" src="src/assets/26239.jpg" alt="gaming-keyboard"/>
+                    <img className="image-main" src="src/assets/26239.jpg" alt="gaming-keyboard"/>
                 </div>
-                <form className="form-class" onSubmit={handleSubmit(handleFormSubmit)}>
+                <div className="form-wrapper login-wrapper">
+                <form onSubmit={handleSubmit(handleFormSubmit)}>
+                    <div className="form-field color-style">
                     <Input
                         inputName="username"
                         inputLabel="Username"
@@ -58,10 +60,12 @@ function SignIn () {
                         register={register}
                         errors={errors}
                     />
+                </div>
+                    <div className="form-field color-style" >
                     <Input
                         inputName="password"
                         inputLabel="Password"
-                        inputType="text"
+                        inputType={visible ? "text" : "password"}
                         inputId="Password-field"
                         validationRules={{
                             required: {
@@ -72,11 +76,14 @@ function SignIn () {
                         register={register}
                         errors={errors}
                     />
+                </div>
+                    <div className="password-icon-login" onClick={()=> (setVisible(!visible))}>
+                        {visible ? <img src="src/assets/eye-thin.svg" alt="visible"/> : <img src="src/assets/eye-closed-thin.svg" alt="invisible"/> }
+                    </div>
                     <Button type="submit" label="Login"/>
                 </form>
-            </div>
-
-            {/*// input maken voor zowel email als wachtwoord, deze opslaan in een variabele en deze meegeven aan de post request*/}
+                </div>
+            </section>
         </main>
     )
 }
