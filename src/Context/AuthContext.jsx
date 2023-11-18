@@ -1,6 +1,8 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
+import {CirclesWithBar} from "react-loader-spinner";
+import Loader from "../helpers/Loader/Loader.jsx";
 
 
 export const AuthContext = createContext({});
@@ -10,7 +12,7 @@ function AuthContextProvider({children}) {
     const [error, toggleError] = useState(false)
     const [isAuth, toggleIsAuth] = useState({
         isAuthenticated: false,
-        user: 'null',
+        user: '',
         status: 'pending',
     });
 
@@ -46,8 +48,6 @@ function AuthContextProvider({children}) {
                     "Authorization": `Bearer ${token}` // vanuit de api gehaald
                 }
             });
-            console.log(response)
-
             toggleIsAuth({
                 isAuthenticated: true,
                 user: {
@@ -77,15 +77,12 @@ function AuthContextProvider({children}) {
         console.log("de gebruiker is uitgelogd") // zorgen dat de gebruiker een melding krijgt, daarna verwijderen
         toggleIsAuth({
             isAuthenticated: false,
-            user: 'null',
+            user: '',
             status: 'done',
         });
+        localStorage.removeItem('token');
         navigate('/');
     }
-
-
-
-
 
     const contextData = {
        ...isAuth,
@@ -96,7 +93,7 @@ function AuthContextProvider({children}) {
     return (
 
         <AuthContext.Provider value={contextData}>
-            {isAuth.status === 'done' ? children : <p>loading!!</p>}
+            {isAuth.status === 'done' ? children :<Loader/>}
         </AuthContext.Provider>
     )
 }
