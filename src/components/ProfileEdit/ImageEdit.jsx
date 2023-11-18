@@ -14,6 +14,13 @@ function ImageEdit () {
 
     async function addImage () {
         try {
+
+            if (!image) {
+                // If no image is selected, display an error and return
+                toggleError(true);
+                return;
+            }
+
             const response = await axios.post(
                 'https://frontend-educational-backend.herokuapp.com/api/user/image',
                 {
@@ -26,6 +33,7 @@ function ImageEdit () {
                 }
             );
             alert('You have now edited your information');
+            window.location.reload();
         } catch (e) {
             toggleError(true);
         }
@@ -56,7 +64,7 @@ function ImageEdit () {
                 <div>
                     <input accept="image/*" type="file" onChange={convertToBase64} className="upload-button" />
                     {image && <img src={image} alt="profile-image" width={40} height={40} />}
-                    <Button  className="overlay-button" type="submit" label="Upload Image" clickHandler={addImage} />
+                    <Button  className="overlay-button" type="submit" label="Upload Image"  disabled={!image} clickHandler={addImage} />
                     <Button  className="overlay-button" label="Edit Image" clickHandler={handleEditClick} />
                 </div>
             ) : (
