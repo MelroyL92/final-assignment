@@ -92,7 +92,7 @@ function GameDetail () {
             {loading && <div className="loader"><Loader/></div>}
             <footer className="footer-game-info">
                 <div className="buttons-game-page">
-                    <Link className="button-styling color-style Link-style" to="/SearchResultPage">back</Link>
+                    <Link className="button-styling color-style Link-style" to="/SearchResultPage">Back</Link>
                     <Link className="button-styling color-style Link-style" to="/">Home</Link>
                     <CreateAndAddToWishlist/>
                     <img className="rawg-pic" src="../../../src/assets/rawg-logo_750x430.jpg" alt="API logo"/>

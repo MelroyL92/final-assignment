@@ -64,7 +64,7 @@ function CreateAndAddToWishlist () {
                         <option key={wishlist.name} value={wishlist.name}>{wishlist.name}</option>
                     ))}
                 </select>
-            <Button clickHandler={handleAddToWishlist} label="add to wishlist" className="color-style border-radius game-betail-button"/>
+            <Button clickHandler={handleAddToWishlist} label="Add to wishlist" className="color-style border-radius game-betail-button"/>
             <input
                     type="text"
                     value={newWishlistName}
