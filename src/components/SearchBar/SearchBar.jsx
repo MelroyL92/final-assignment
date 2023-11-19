@@ -16,17 +16,17 @@ function SearchBar({ source, iconSrc, clickHandler }) {
 
     return (
         <div className="parent-container-searchbar">
-            <form onSubmit={submit} className="searchbar-container">
+            <form onSubmit={submit} className="searchbar-container media-area">
                 <input
                     type="text"
                     value={searchTerm}
                     onChange={clickHandler}
                     placeholder="Search..."
                 />
-                <select className="select-class" value={selectedParam} onChange={(e) => setSelectedParam(e.target.value)}>
-                    <option value="name">Name</option>
-                    <option value="developer">Developer</option>
-                    <option value="genre">Genre</option>
+                <select className="select-class " value={selectedParam} onChange={(e) => setSelectedParam(e.target.value)}>
+                    <option className="media-select" value="name">Name</option>
+                    <option className="media-select" value="developer">Developer</option>
+                    <option className="media-select" value="genre">Genre</option>
                     <option value="publisher">Publisher</option>
                 </select>
                 <button type="submit">

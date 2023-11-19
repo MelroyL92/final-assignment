@@ -9,11 +9,12 @@ import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
 import WishlistOverviewPicture from "../../components/WishlistOverviewPicture/WishlistOverviewPicture.jsx";
+import TextArea from "../../components/TextArea/TextArea.jsx";
 
 
 function WishlistOverview() {
     const { wishlist } = useContext(WishlistContext);
-    const { register, handleSubmit, formState: { errors }, getValues } = useForm();
+    const { control, register, handleSubmit, formState: { errors }, getValues } = useForm();
     const { isAuthenticated, logout } = useContext(AuthContext);
     const [filterSearch, setFilterSearch] = useState('');
     const [filteredWishlist, setFilteredWishlist] = useState([]);
@@ -89,7 +90,7 @@ function WishlistOverview() {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="nav-button color-style" type="button" clickHandler={logout} name="Logout"
+                        <Button className="nav-button color-style min-width-1025px-links" type="button" clickHandler={logout} name="Logout"
                                 label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out" />
                     </>
                 ) : (
@@ -115,8 +116,8 @@ function WishlistOverview() {
                                 <WishlistOverviewPicture wishlistName={titleList.name}/>
                             </div>
                             <div className="wishlist-middle-wrapper">
-                                <Link to={`/SpecificWishlist/${titleList.name}`}>
-                                    <h2>{titleList.name}</h2>
+                                <Link className="wishlistLink" to={`/SpecificWishlist/${titleList.name}`}>
+                                    <h3>{titleList.name}</h3>
                                 </Link>
                                 <p>Total Games: {titleList.games.length}</p>
                             </div>
@@ -126,7 +127,7 @@ function WishlistOverview() {
                                 ))}
                             </ul>
                             <div>
-                                <div className="parent-container-form">
+                                <div className="wishlist-container">
                                     {comments && comments[`subtitle-${titleList.name}`] && comments[`comment-${titleList.name}`] ? (
                                         <div className="parent-container-form-wishlist">
                                             {editMode && editedListName === titleList.name ? (
@@ -141,15 +142,23 @@ function WishlistOverview() {
                                                         errors={errors}
                                                     />
                                                     <h4>Comment:</h4>
-                                                    <Input
-                                                        inputType="textarea"
+                                                    <TextArea
                                                         inputName={`comment-${titleList.name}`}
                                                         inputId={`comment-field-${titleList.name}`}
-                                                        defaultValue={comments[`comment-${titleList.name}`]}
+                                                        inputType="textarea"
+                                                        validationRules={{
+                                                            required: {
+                                                                value: false,
+                                                            }
+                                                        }}
                                                         register={register}
                                                         errors={errors}
+                                                        control={control}
+                                                        rows={2}
+                                                        cols={25}
+                                                        ref={textAreaRef}
                                                     />
-                                                    <Button type="submit" label="Save Changes" clickHandler={() => handleWishlistCommentSubmit(getValues(), titleList.name)} className="button-wishlist-overview color-style border-radius" />
+                                                    <Button type="submit" label="Save" clickHandler={() => handleWishlistCommentSubmit(getValues(), titleList.name)} className="button-wishlist-overview color-style border-radius" />
                                                     <Button type="button" label="Edit" clickHandler={() => handleCancelEdit()} className="button-wishlist-overview color-style border-radius" />
                                                 </>
                                             ) : (
@@ -173,7 +182,7 @@ function WishlistOverview() {
 
                                                     validationRules={{
                                                         required: {
-                                                            value: true,
+                                                            value: false,
                                                             message: "please fill in a subtitle",
                                                         },
                                                     }}
@@ -181,21 +190,26 @@ function WishlistOverview() {
                                                     errors={errors}
                                                 />
                                                 <p>Comment:</p>
-                                                <Input
-                                                    inputType="textarea"
+                                                <TextArea
                                                     inputName={`comment-${titleList.name}`}
                                                     inputId={`comment-field-${titleList.name}`}
+                                                    inputType="textarea"
                                                     validationRules={{
                                                         required: {
-                                                            value: true,
-                                                            message: "please fill in a description of the list",
+                                                            value: false,
                                                         },
+                                                            maxLength:40,
+                                                            message: "exceeded the maximum amount of 40 characters"
                                                     }}
                                                     register={register}
                                                     errors={errors}
+                                                    control={control}
+                                                    rows={2}
+                                                    cols={25}
                                                     ref={textAreaRef}
                                                 />
-                                                <Button type="submit" name={`wishlist-${titleList.name}`} label="Submit information color-style border-radius" />
+                                                <Button type="submit" name={`wishlist-${titleList.name}`} label="Submit information" className="color-style border-radius"/>
+                                                {}
                                             </form>
                                         </div>
                                     )}

@@ -7,7 +7,7 @@ function NavLinks ({ to, iconSrc, altText, text }){
     return (
         <div className="nav-class color-style">
             <ul>
-                <li className="nav-list-container ">
+                <li className="nav-list-container min-width-1025px-links ">
                     <Link className="Link-style" to={to}>
                         <div className="list-class ">
                             {text}

@@ -6,9 +6,9 @@
 
 .button-wishlist-specific{
     display: flex;
-    height: 25px;
+    height: 30px;
     min-width: 40px;
-    padding: 1px 0;
+    padding: 2px 0;
     justify-content: center;
 }
 

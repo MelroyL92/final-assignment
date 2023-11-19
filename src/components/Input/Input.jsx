@@ -5,9 +5,9 @@ const Input = ({inputType, inputName, inputLabel, inputId, validationRules, regi
 
     return (
         <>
-       <label htmlFor={inputId}>
+       <label htmlFor={inputId} className="media-input color-style border-radius" >
            {inputLabel}
-           <input
+           <input className="media-input"
            type={inputType}
            id={inputId}
            {...register(inputName,validationRules)}

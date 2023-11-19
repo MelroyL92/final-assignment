@@ -36,7 +36,7 @@ function Homepage () {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="nav-button color-style" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
+                        <Button className="nav-button color-style min-width-1025px-links" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
                     </>
                 ) : (
                     <>
@@ -92,8 +92,8 @@ function Homepage () {
                                 />
                             </div>
                             <div className="color-style form-homepage">
-                                <p>Comment :</p>
                                 <TextArea
+                                    inputLabel="Comment"
                                     inputName="comment"
                                     inputId="comment-field"
                                     validationRules={{

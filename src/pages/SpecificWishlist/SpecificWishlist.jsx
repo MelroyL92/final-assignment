@@ -6,7 +6,6 @@ import './SpecificWishlist.css'
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import Grade from "../../components/Grade/Grade.jsx";
 import Button from "../../components/Button/Button.jsx";
-import Input from "../../components/Input/Input.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
 import TextArea from "../../components/TextArea/TextArea.jsx";
@@ -15,7 +14,7 @@ function SpecificWishlist() {
     const { listName } = useParams();
     const { wishlist } = useContext(WishlistContext);
     const {isAuthenticated, logout} = useContext(AuthContext)
-    const {control, register, handleSubmit, formState: { errors }, setValue, getValues } = useForm();
+    const {control, register, handleSubmit, formState: { errors }, getValues } = useForm();
     const [grade, setGrade] = useState(0);
     const [filterSearch, setFilterSearch] = useState('');
     const [editMode, setEditMode] = useState({});
@@ -90,7 +89,7 @@ function SpecificWishlist() {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="nav-button color-style" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="../src/assets/sign-out-thin.svg" altText="sign-out"/>
+                        <Button className="nav-button color-style min-width-1025px-links" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="../src/assets/sign-out-thin.svg" altText="sign-out"/>
                     </>
                 ) : (
                     <>
@@ -157,8 +156,8 @@ function SpecificWishlist() {
                                 </form>
                             ) : (
                                 <>
-                                    <div>Comments: {commentsAndGrades[game.id]?.comment || 'No comment'}</div>
-                                    <div>Grade: {commentsAndGrades[game.id]?.grade || 'No grade'}</div>
+                                    <div className="media-wishlist">Comments: {commentsAndGrades[game.id]?.comment || 'No comment'}</div>
+                                    <div className="media-wishlist">Grade: {commentsAndGrades[game.id]?.grade || 'No grade'}</div>
                                 </>
                             )}
                             </div>

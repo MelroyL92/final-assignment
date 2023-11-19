@@ -13,6 +13,7 @@
 }
 
 
+
 .parent-container-form-wishlist{
     display: flex;
     flex-direction: column;
@@ -36,6 +37,6 @@
 .button-wishlist-overview{
     display: flex;
     justify-content: center;
-    width: 50%;
+    width: 50px;
     margin: 1px 0;
 }

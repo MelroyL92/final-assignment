@@ -24,7 +24,7 @@ function SearchResultPage () {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="nav-button color-style" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
+                        <Button className="nav-button color-style min-width-1025px-links" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="src/assets/sign-out-thin.svg" altText="sign-out"/>
                     </>
                 ) : (
                     <>
@@ -41,7 +41,7 @@ function SearchResultPage () {
                 <section>
                     <ul className="list-wrapper-search-result">
                         {gameResult && gameResult.results && gameResult.results.length > 0 && gameResult.results.map((game)=> (
-                            <li key={game.id} className="list-items-search-result color-style">
+                            <li key={game.id} className="list-items-search-result color-style min-width-1025px-links">
                                 <Link to={`/GameDetail/${game.id}`}>{game.name}</Link>
                                 <p>released: {game.released}</p>
 

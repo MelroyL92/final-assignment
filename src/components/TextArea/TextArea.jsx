@@ -12,7 +12,7 @@ const TextArea = forwardRef(({ inputLabel, inputId, validationRules, control, er
                     id={inputId}
                     control={control}
                     rules={validationRules}
-                    render={({ field }) => <textarea className="color-style" {...field} rows={rows} cols={cols} ref={ref}  />}
+                    render={({ field }) => <textarea className="color-style media-area" {...field} rows={rows} cols={cols} ref={ref}  />}
                 />
             </label>
             {errors[inputName] && <p>{errors[inputName].message}</p>}
