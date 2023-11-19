@@ -1,8 +1,8 @@
 import axios from "axios";
 import {useForm} from "react-hook-form";
 import { useState} from "react";
-import Input from "../Forms/Input/Input.jsx";
-import Button from "../Forms/Button/Button.jsx";
+import Input from "../Input/Input.jsx";
+import Button from "../Button/Button.jsx";
 import "./ProfileEdit.css"
 
 function ProfileEdit () {
@@ -45,20 +45,16 @@ function ProfileEdit () {
         const hasNewEmail = !!data.email;
         const hasNewPassword = !!data.password;
 
-        // Validate email format if there is a new email
         if (hasNewEmail && !isValidEmailFormat(data.email)) {
             alert('Please fill in a valid email');
             return;
         }
 
-        // Check if passwords match only if a new password is entered
         if (hasNewPassword && data.password !== data['repeatedPassword']) {
             setPasswordsMatch(false);
-            alert('Passwords do not match. Please try again.');
             return;
         }
 
-        // If there is a new email or a new password, proceed with the edit
         if (hasNewEmail || hasNewPassword) {
             const requestData = {};
 
@@ -82,7 +78,7 @@ function ProfileEdit () {
 
         <div className="edit-wrapper">
         <form onSubmit={handleSubmit(handleEditUser)} >
-            <div className="form-field color-style">
+            <div className="form-profile color-style border-radius">
                 <p>Email</p>
             <Input
                 inputName="email"
@@ -97,7 +93,7 @@ function ProfileEdit () {
                 errors={errors}
             />
         </div>
-            <div className="form-field color-style">
+            <div className=" form-profile color-style border-radius">
                 <p>Password</p>
             <Input
                 inputName="password"
@@ -113,7 +109,7 @@ function ProfileEdit () {
                 errors={errors}
             />
         </div>
-            <div className="form-field color-style">
+            <div className="form-profile color-style border-radius">
                 <p>Repeat your password</p>
             <Input
                 inputName="repeatedPassword"
@@ -133,7 +129,7 @@ function ProfileEdit () {
             )}
             </div>
 
-            <Button type="submit" label="Change information"/>
+            <Button type="submit" label="Change information" className="color-style border-radius"/>
         </form>
         </div>
 

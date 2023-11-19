@@ -2,3 +2,12 @@
     display: flex;
     justify-content: space-between;
 }
+
+.button-detail{
+    border: 1px solid black;
+}
+
+.form-detail{
+    border:1px solid black;
+    margin: 1px 0 0 1px;
+}

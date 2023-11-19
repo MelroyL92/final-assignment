@@ -11,7 +11,8 @@ const TextArea = forwardRef(({ inputLabel, inputId, validationRules, control, er
                     name={inputName}
                     id={inputId}
                     control={control}
-                    render={({ field }) => <textarea className="color-style" {...field} rows={rows} cols={cols} ref={ref} />}
+                    rules={validationRules}
+                    render={({ field }) => <textarea className="color-style" {...field} rows={rows} cols={cols} ref={ref}  />}
                 />
             </label>
             {errors[inputName] && <p>{errors[inputName].message}</p>}

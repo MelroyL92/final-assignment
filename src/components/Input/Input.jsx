@@ -1,4 +1,4 @@
-
+import "./input.css"
 
 const Input = ({inputType, inputName, inputLabel, inputId, validationRules, register, errors}) => {
 
@@ -13,8 +13,7 @@ const Input = ({inputType, inputName, inputLabel, inputId, validationRules, regi
            {...register(inputName,validationRules)}
            />
        </label>
-    {errors[inputName] && <p>
-        {errors[inputName].message}</p>}
+            {errors[inputName] && <p>{errors[inputName].message}</p>}
         </>
     );
 }

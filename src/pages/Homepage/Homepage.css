@@ -1,25 +1,26 @@
 
-.section-container{
+.section-container-homepage{
     display: flex;
     width: 85vw;
-    height:77vh;
+    height:68vh;
 }
 
-.img-searchbar-container {
+.img-searchbar-container-homepage {
     display: flex;
     flex-direction: column;
-    margin: 0px 0px 10px 0px;
+    margin: 0 0 10px 0;
     align-items: center;
+
 }
 
-.footer-container{
+.footer-container-homepage{
     display: flex;
-    height: 14vh;
+    height: 32vh;
     max-width: calc(100% - 12vw);
     justify-content: center;
 }
 
-.form-home{
+.form-homepage{
     margin: 0 0 5px;
     padding: 0 0 0 5px;
     border-radius: 12px;
