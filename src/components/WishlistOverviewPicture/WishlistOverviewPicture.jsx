@@ -1,5 +1,4 @@
 import {useEffect, useState} from "react";
-import './WishlistOverviewPicture.css'
 
  function WishlistOverviewPicture ({ wishlistName }) {
     const [wishlist,setWishlist] = useState([])

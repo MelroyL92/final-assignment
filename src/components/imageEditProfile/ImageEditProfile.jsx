@@ -1,9 +1,10 @@
 import axios from "axios";
 import {useState} from "react";
-import Button from "../Forms/Button/Button.jsx";
+import Button from "../Button/Button.jsx";
+import './imageEditProfile.css';
 
 
-function ImageEdit () {
+function ImageEditProfile () {
 
     const [error, toggleError] = useState(false)
     const [image, setImage] = useState("")
@@ -16,7 +17,6 @@ function ImageEdit () {
         try {
 
             if (!image) {
-                // If no image is selected, display an error and return
                 toggleError(true);
                 return;
             }
@@ -62,13 +62,32 @@ function ImageEdit () {
         <div>
             {isEditing ? (
                 <div>
-                    <input accept="image/*" type="file" onChange={convertToBase64} className="upload-button" />
-                    {image && <img src={image} alt="profile-image" width={40} height={40} />}
-                    <Button  className="overlay-button" type="submit" label="Upload Image"  disabled={!image} clickHandler={addImage} />
-                    <Button  className="overlay-button" label="Edit Image" clickHandler={handleEditClick} />
+                        <label htmlFor="imageInput" className="color-style border-radius upload-button">
+                        <input
+                            id="imageInput"
+                            accept="image/*"
+                            type="file"
+                            onChange={convertToBase64}
+                            style={{ display: 'none' }}
+                        />
+                        Upload Image
+                    </label>
+                    {image && <img src={image} alt="profile-image" />}
+                    <Button
+                        className="overlay-button color-style border-radius"
+                        type="submit"
+                        label="Upload Image"
+                        disabled={!image}
+                        clickHandler={addImage}
+                    />
+                    <Button
+                        className="overlay-button color-style border-radius"
+                        label="Edit Image"
+                        clickHandler={handleEditClick}
+                    />
                 </div>
             ) : (
-                <button  className="overlay-button" onClick={handleEditClick}>Edit Image</button>
+                <Button className="overlay-button color-style border-radius" clickHandler={handleEditClick} label="edit image"/>
             )}
         </div>
     );
@@ -76,4 +95,4 @@ function ImageEdit () {
 
 
 
-export default ImageEdit
+export default ImageEditProfile

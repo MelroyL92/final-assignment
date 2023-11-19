@@ -6,6 +6,13 @@
 
 .register-wrapper{
     display: flex;
-    height: 20vh;
+    height: 29vh;
     width:25vw;
+}
+
+.password-icon-register{
+    display: flex;
+    transform: translateY(-120%) translateX(840%);
+    width: 10%;
+    position: relative;
 }

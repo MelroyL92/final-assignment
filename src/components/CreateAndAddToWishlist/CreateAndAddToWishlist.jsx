@@ -2,8 +2,7 @@ import {useContext, useState} from "react";
 import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import './CreateAndAddToWishlist.css'
-import Button from "../Forms/Button/Button.jsx";
-
+import Button from "../Button/Button.jsx";
 
 function CreateAndAddToWishlist () {
     const { wishlist, setWishlist} = useContext(WishlistContext)
@@ -34,17 +33,16 @@ function CreateAndAddToWishlist () {
 
     const handleCreateWishlist = () => {
         if (newWishlistName.trim() !== '') {
-            // Create a new wishlist with the entered name
             const newWishlist = {
                 name: newWishlistName,
                 games: [],
             };
 
             if (gameInfo) {
-                newWishlist.games.push(gameInfo); // Add the game to the new wishlist if gameInfo is available
+                newWishlist.games.push(gameInfo);
             }
 
-            setWishlist([...wishlist, newWishlist]); // Update the wishlist state
+            setWishlist([...wishlist, newWishlist]);
 
             setNewWishlistName('');
             setNotification(`A new list has been created, and ${gameInfo.name} has been added to the list.`);
@@ -56,6 +54,9 @@ function CreateAndAddToWishlist () {
 
     return (
         <div>
+            <div>
+                {notification && <div className="notification">{notification}</div>}
+            </div>
         <div className="button-container">
             <select value={selectedWishlist} onChange={(e) => setSelectedWishlist(e.target.value)}>
                     <option value="">Select Wishlist</option>
@@ -63,16 +64,17 @@ function CreateAndAddToWishlist () {
                         <option key={wishlist.name} value={wishlist.name}>{wishlist.name}</option>
                     ))}
                 </select>
-            <button onClick={handleAddToWishlist}>Add to wishlist</button>
+            <Button clickHandler={handleAddToWishlist} label="add to wishlist" className="color-style border-radius"/>
             <input
                     type="text"
                     value={newWishlistName}
                     onChange={(e) => setNewWishlistName(e.target.value)}
                     placeholder="Create a new wishlist"
+                    className="form-detail"
                 />
-            <button onClick={handleCreateWishlist}>Create new wishlist</button>
+
+            <Button clickHandler={handleCreateWishlist} label="Create new wishlist" className="color-style border-radius"/>
         </div>
-            {notification && <div className="notification">{notification}</div>}
         </div>
     );
 }

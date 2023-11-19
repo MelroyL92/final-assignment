@@ -1,10 +1,41 @@
+
+
 .page-wrapper {
     display: flex;
+    flex-direction: column;
     width: 85vw;
     align-items: center;
 }
 
-.result-class {
-    height: 70vh;
+.overflow-class {
     overflow: auto;
+    height: 69vh;
+}
+
+
+.parent-container-form-wishlist{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    overflow: auto;
+    min-width: 150px;
+    width: 100%;
+    height: 100%;
+    margin: 0 5px 0 5px;
+    flex-grow: 1;
+    text-overflow:ellipsis;
+    word-wrap: break-word;
+}
+
+.form-class-wishlist{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.button-wishlist-overview{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    margin: 1px 0;
 }

@@ -1,19 +1,19 @@
-.page-wrapper {
+.page-wrapper-search-result {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    width: 85vw;
+    overflow: auto;
 }
 
-.list-wrapper{
+.list-wrapper-search-result{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     height: 20vh;
     max-width: calc(100vw - 20vw);
-
 }
 
-.list-items {
+.list-items-search-result {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,11 +22,6 @@
     height: 20vh;
     margin: 10px 10px;
     border-radius: 25%;
-    background: rgb(164, 160, 157);
-    background: linear-gradient(90deg, rgba(164, 160, 157, 1) 30%, rgba(80, 78, 78, 1) 98%);
     border: 5px outset black;
-}
 
-.result-class {
-    height: 70vh;
 }

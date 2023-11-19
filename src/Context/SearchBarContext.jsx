@@ -21,7 +21,6 @@ const SearchBarContextProvider = ({children}) => {
 
 
     const handleSearch = async (param) => {
-        console.log(searchTerm)
         setError(false);
         setLoader(false);
 
@@ -36,7 +35,7 @@ const SearchBarContextProvider = ({children}) => {
                 endpoint = `developers?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
             case 'genre': // lastige is dat je hier alleen met id's kunt werken of dus zonder searchterm en de /
-                endpoint = `genres/${searchTerm}?key=${import.meta.env.VITE_REACT_API_KEY}`;
+                endpoint = `genres?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
             case 'publisher':
                 endpoint = `publishers?key=${import.meta.env.VITE_REACT_API_KEY}`;

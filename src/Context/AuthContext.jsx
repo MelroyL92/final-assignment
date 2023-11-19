@@ -1,7 +1,6 @@
 import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
-import {CirclesWithBar} from "react-loader-spinner";
 import Loader from "../helpers/Loader/Loader.jsx";
 
 
@@ -9,7 +8,6 @@ export const AuthContext = createContext({});
 
 
 function AuthContextProvider({children}) {
-    const [error, toggleError] = useState(false)
     const [isAuth, toggleIsAuth] = useState({
         isAuthenticated: false,
         user: '',
@@ -65,7 +63,6 @@ function AuthContextProvider({children}) {
                 ...isAuth,
                 status: 'done',
             })
-            toggleError(true);
         }
 
         navigate('/ProfilePage')

@@ -1,24 +1,26 @@
 import NavLinks from "../../components/Navlinks/Navlinks.jsx";
-import {useContext, useEffect, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {Link, useParams} from "react-router-dom";
 import './SpecificWishlist.css'
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
-import Grade from "../../helpers/Grade/Grade.jsx";
-import Button from "../../components/Forms/Button/Button.jsx";
-import Input from "../../components/Forms/Input/Input.jsx";
+import Grade from "../../components/Grade/Grade.jsx";
+import Button from "../../components/Button/Button.jsx";
+import Input from "../../components/Input/Input.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
+import TextArea from "../../components/TextArea/TextArea.jsx";
 
 function SpecificWishlist() {
     const { listName } = useParams();
     const { wishlist } = useContext(WishlistContext);
     const {isAuthenticated, logout} = useContext(AuthContext)
-    const { register, handleSubmit, formState: { errors }, setValue, getValues } = useForm();
+    const {control, register, handleSubmit, formState: { errors }, setValue, getValues } = useForm();
     const [grade, setGrade] = useState(0);
     const [filterSearch, setFilterSearch] = useState('');
     const [editMode, setEditMode] = useState({});
     const [commentsAndGrades, setCommentsAndGrades] = useState({}); // Define commentsAndGrades state
+    const textAreaRef = useRef();
 
 
     //logic for the comments for the specific wishlist, similar to the overview
@@ -78,7 +80,7 @@ function SpecificWishlist() {
 
     return (
         <main className="parent-container">
-            <nav className="nav-class">
+            <nav className="nav-class color-style">
                 <NavLinks to="/" iconSrc="../src/assets/house-line-thin.svg" altText="home icon" text="Home"/>
                 <NavLinks to="/WishlistOverview" iconSrc="../src/assets/list-thin.svg" altText="wishlist icon"
                           text="Wishlists"/>
@@ -88,7 +90,7 @@ function SpecificWishlist() {
                 {isAuthenticated ? (
                     <>
                         <NavLinks to="/ProfilePage" iconSrc="../src/assets/user-thin.svg" altText="login icon" text="profile" />
-                        <Button className="nav-button" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="../src/assets/sign-out-thin.svg" altText="sign-out"/>
+                        <Button className="nav-button color-style" type="button" clickHandler={logout} name="Logout" label="Logout" iconSrc="../src/assets/sign-out-thin.svg" altText="sign-out"/>
                     </>
                 ) : (
                     <>
@@ -108,30 +110,40 @@ function SpecificWishlist() {
                         clickHandler={(event) => setFilterSearch(event.target.value)}
                     />
                 </div>
-                <ul>
+                <div className="overflow-class">
+                <ul className="overflow-class">
                     {filteredGames.map((game) => (
                         <li key={game.id} className="wishlist-overview-wrapper">
-                            <span>
+                            <div className="wishlist-image-wrapper">
                                 <img src={game.background_image} alt="game-image" />
-                            </span>
-                            <div>
-                                <Link to={`/GameDetail/${game.id}`}>{game.name}</Link>
                             </div>
+                            <div className="wishlist-middle-wrapper">
+                               <h3><Link to={`/GameDetail/${game.id}`}>{game.name}</Link></h3>
+                            </div>
+                            <div className="parent-container-form-wishlist">
                             {editMode[game.id] ? (
                                 <form onSubmit={handleSubmit(() => handleSpecificWishlistSubmit(game.id))}>
-                                    <Input
+                                   <div>
+                                    <p>Comments:</p>
+                                    <TextArea
                                         inputName={`comment-${game.id}`}
                                         inputId={`comment-field-${game.id}`}
-                                        inputLabel="Comments"
-                                        inputType="textarea"
                                         defaultValue={commentsAndGrades[game.id]?.comment || ''}
+                                        inputType="textarea"
                                         validationRules={{
-                                            required: false,
+                                            required: {
+                                                value: false,
+                                            }
                                         }}
                                         register={register}
-                                        setValue={setValue}
                                         errors={errors}
+                                        control={control}
+                                        rows={2}
+                                        cols={25}
+                                        ref={textAreaRef}
                                     />
+                                   </div>
+                                    <div>
                                     <Grade
                                         id={game.id}
                                         type="range"
@@ -140,7 +152,8 @@ function SpecificWishlist() {
                                         changeHandler={(event) => handleSliderChange(event, game.id)}
                                         grade={grade[game.id] || 0}
                                     />
-                                    <Button type="submit" label="Store Data" />
+                                </div>
+                                    <Button type="submit" label="Store Data" className="color-style border-radius" />
                                 </form>
                             ) : (
                                 <>
@@ -148,12 +161,16 @@ function SpecificWishlist() {
                                     <div>Grade: {commentsAndGrades[game.id]?.grade || 'No grade'}</div>
                                 </>
                             )}
-                            <button onClick={() => handleEditToggle(game.id)}>
-                                {editMode[game.id] ? 'Cancel' : 'Edit'}
-                            </button>
+                            </div>
+                            <Button className="button-wishlist-specific color-style border-radius" clickHandler={() => handleEditToggle(game.id)} label="Edit"/>
                         </li>
+
                     ))}
+
+
+
                 </ul>
+                </div>
             </div>
         </main>
     );
