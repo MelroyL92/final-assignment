@@ -80,6 +80,13 @@ Na registratie dien je naar de inlogpagina te gaan via dezelfde knop aan de link
 Eenmaal ingelogd met de gegevens wordt je vanzelf doorgestuurd naar de profielpagina waar je eventueel gegevens aan kunt passen
 of een foto toe kunt voegen. Vanaf dit moment heb je toegang tot alle functionaliteiten binnen de website.
 
+Overige informatie:
+alleen de detail pagina van de games en de specifieke wishlist pagina zijn alleen te bereiken via respectievelijk
+de wishlist overview of search resultpagina. De game detail pagina kan zowel bereikt worden via de specifieke wishlist als wel de search
+overzicht pagina.
+
+Na het registreren word je wachtwoord en username nergens opgeslagen, onthou deze goed!
+Registreren kan binnen enkele seconde op de registratiepagina.
 
 Happy coding!
 
