@@ -88,6 +88,8 @@ overzicht pagina.
 Na het registreren word je wachtwoord en username nergens opgeslagen, onthou deze goed!
 Registreren kan binnen enkele seconde op de registratiepagina.
 
+Link Github repository: https://github.com/MelroyL92/final-assignment
+
 Happy coding!
 
 
