@@ -70,6 +70,13 @@ ul {
 
 body {
   font-family: 'Roboto Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+h1 {
+  font-weight: 700;
 }
 
 
@@ -126,7 +133,7 @@ body {
   flex-direction: column;
   margin: 20px 0;
   height: 22%;
-  padding: 0 0 10px 10px;
+  padding: 0 0 50px 10px;
   position: relative;
   border-radius: 12px;
 }
