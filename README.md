@@ -45,7 +45,7 @@ API
 
 Binnen dit project wordt daarnaast ook gebruik gemaakt van een API. De toegang tot die API wordt geregeld via een API key.
 De key staat in het .env bestand en kan 20.000 keer per maand gratis gebruikt worden. Deze key wordt automatisch doorgegeven aan de API,
-maar zal in dit project ook nog los in een PDF bestand gevoegd worden. Bij wijzigingen in het project raad ik aan om altijd even een build commando van
+maar zal in dit project ook nog onderaan deze pagina bijgevoegd worden. Bij wijzigingen in het project raad ik aan om altijd even een build commando van
 npm uit te voeren, dit kan door in de terminal het volgende in te voeren:
 
 npm run build
@@ -58,7 +58,7 @@ Andere handige NPM commando's zijn:
 - npm install -g, voor het updaten van npm
 - npm help, voor hulp met npm gerelateerde zaken.
 
-Nog één belangrijk puntje betreft het gebruik van de letter q. Als je eenmaal npm run of npm run dev gebruikt hebt en je wilt iets in de terminal doen kan dit alleen als je
+Nog één belangrijk onderdeel betreft het gebruik van de letter q. Als je eenmaal npm run of npm run dev gebruikt hebt en je wilt iets in de terminal doen kan dit alleen als je
 in de terminal klikt en op q drukt. Wil je daarna weer npm runnen moet je het commando hiervoor weer gebruiken.
 
 De API heeft altijd een key nodig nodig in het verzoek, de request, om gegevens terug te kunnen krijgen zodat alleen de juiste mensen

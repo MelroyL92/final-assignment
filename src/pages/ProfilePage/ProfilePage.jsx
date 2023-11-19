@@ -1,4 +1,4 @@
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import {AuthContext} from "../../Context/AuthContext.jsx";
 import NavLinks from "../../components/Navlinks/Navlinks.jsx";
 import Button from "../../components/Button/Button.jsx";
@@ -52,14 +52,10 @@ function ProfilePage () {
                         <ProfileEdit/>
                         </div>
                     </div>
-
                 </div>
-
             </section>
-
         </main>
     )
-
 }
 
 export default ProfilePage

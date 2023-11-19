@@ -1,9 +1,18 @@
-.parent-container-searchbar{
 
+
+/*////////////////////////
+    1.  parent container Searchbar
+////////////////////////*/
+
+.parent-container-searchbar{
     display: flex;
     width: 45vw;
 }
 
+
+/*////////////////////////
+    2. Search bar child element
+////////////////////////*/
 .searchbar-container {
     display: flex;
     flex-grow: 1;
@@ -11,41 +20,41 @@
     align-items: center;
     border-radius: 40px;
     border: 1px solid black;
-    background: rgb(164, 160, 157);
-    background: linear-gradient(
-            90deg,
-            rgba(164, 160, 157, 1) 30%,
-            rgba(80, 78, 78, 1) 98%
-    );
 }
+
+/*////////////////////////
+    2. Search bar input + Button
+////////////////////////*/
 
 .searchbar-container input {
     background: transparent;
     flex: 1;
     border: 0;
     outline: none;
-    padding: 10px; /* Adjust padding as needed */
+    padding: 10px;
 }
 
 .searchbar-container button {
     outline: none;
     border-radius: 50%;
     background: transparent;
-    padding: 5px; /* Adjust padding as needed */
-    min-width: 30px; /* Set a minimum width */
-}
-
-.searchbar-container button img {
-    width: 40px;
-    height: 40px;
+    padding: 5px;
+    min-width: 30px;
 }
 
 .select-class {
     background:   rgba(164, 160, 157, 1);
     border-radius: 12px;
     margin-right: 10px;
+}
 
 
+/*////////////////////////
+    2. Search bar magnifying glass container
+////////////////////////*/
+.searchbar-container button img {
+    width: 40px;
+    height: 40px;
 }
 
 

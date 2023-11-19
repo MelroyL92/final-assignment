@@ -17,10 +17,10 @@ function AuthContextProvider({children}) {
 
     useEffect( ()=> {
 
-      const token =  localStorage.getItem('token')
+      const token =  localStorage.getItem('token');
 
         if (token) {
-            void login(token)
+            void login(token);
         } else {
             toggleIsAuth({
                 ...isAuth,
@@ -35,9 +35,9 @@ function AuthContextProvider({children}) {
     const navigate = useNavigate();
 
 
-    async function login (token) {   // hier wordt de token ontvangen vanuit de Login page
+    async function login (token) {
 
-        localStorage.setItem('token', token)
+        localStorage.setItem('token', token);
 
         try {
             const response = await axios.get(`https://frontend-educational-backend.herokuapp.com/api/user/`, {
@@ -66,12 +66,10 @@ function AuthContextProvider({children}) {
         }
 
         navigate('/ProfilePage')
-        console.log("de gebruiker is ingelogd") // zorgen dat de gebruiker een melding krijgt, daarna verwijderen
     }
 
 
     function logout() {
-        console.log("de gebruiker is uitgelogd") // zorgen dat de gebruiker een melding krijgt, daarna verwijderen
         toggleIsAuth({
             isAuthenticated: false,
             user: '',

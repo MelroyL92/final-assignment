@@ -12,17 +12,16 @@ const SearchBarContextProvider = ({children}) => {
     const navigate = useNavigate();
     const [error, setError] = useState(false);
     const [gameResult, setGameResult] = useState([])
-    const [loader, setLoader] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         setSearchTerm(e.target.value);
-        console.log(searchTerm)
     }
 
 
     const handleSearch = async (param) => {
         setError(false);
-        setLoader(false);
+        setLoading(true);
 
         let baseUrl = 'https://api.rawg.io/api/';
         let endpoint = '';
@@ -34,33 +33,39 @@ const SearchBarContextProvider = ({children}) => {
             case 'developer':
                 endpoint = `developers?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
-            case 'genre': // lastige is dat je hier alleen met id's kunt werken of dus zonder searchterm en de /
+            case 'genre':
                 endpoint = `genres?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
             case 'publisher':
                 endpoint = `publishers?key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
-            default: // in de default ook degene van name gezet omdat op de 1 of andere manier soms de eerste keer een leeg object terug kwam
-                endpoint = `games?search=${searchTerm}&key=${import.meta.env.VITE_REACT_API_KEY}`
+            default:
+                endpoint = `games?search=${searchTerm}&key=${import.meta.env.VITE_REACT_API_KEY}`;
                 break;
         }
         const apiUrl = baseUrl + endpoint;
 
         try {
             const response = await axios.get(apiUrl);
-            const responseData = response.data; // hiervoor een console.log verwijderd, werkt het nog?
-            setGameResult(responseData);
-            navigate('/SearchResultPage');
+            const responseData = response.data;
+
+            if (responseData.results && responseData.results.length === 0) {
+                setError(true);
+            } else {
+                setGameResult(responseData);
+                navigate('/SearchResultPage');
+            }
         } catch (e) {
             console.error(e);
             setError(true);
-            setLoader(true);
+        } finally {
+            setLoading(false)
         }
     };
 
     return (
 
-        <SearchBarContext.Provider value={{gameResult, setGameResult , handleSearch, setSearchTerm, handleChange}}>
+        <SearchBarContext.Provider value={{gameResult, setGameResult , handleSearch, setSearchTerm, handleChange, error, loading}}>
             {children}
         </SearchBarContext.Provider>
 

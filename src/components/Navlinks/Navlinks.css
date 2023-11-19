@@ -1,4 +1,21 @@
 
+/*////////////////////////
+    1. Parent
+////////////////////////*/
+
+.nav-class {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    width: 15vw;
+    height: 100vh;
+}
+
+
+/*////////////////////////
+    2. list
+////////////////////////*/
+
 .list-class{
     display: flex;
     flex-direction: row-reverse;
@@ -10,14 +27,9 @@
     border: 3px outset black;
 }
 
-.nav-class {
-    display: flex;
-    justify-content: flex-end;
-    flex-direction: column;
-    width: 15vw;
-    height: 100vh;
-}
-
+/*////////////////////////
+    3. Button nav element
+////////////////////////*/
 
 .nav-button {
     display: flex;

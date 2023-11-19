@@ -6,11 +6,12 @@ import {useContext} from "react";
 import {SearchBarContext} from "../../Context/SearchBarContext.jsx";
 import Button from "../../components/Button/Button.jsx";
 import {AuthContext} from "../../Context/AuthContext.jsx";
+import Loader from "../../helpers/Loader/Loader.jsx";
 
 
 function SearchResultPage () {
-    const {gameResult, handleSearch,handleChange, searchTerm} = useContext(SearchBarContext);
-    const {isAuthenticated, logout} = useContext(AuthContext)
+    const {gameResult, handleSearch,handleChange, searchTerm, loading, error} = useContext(SearchBarContext);
+    const {isAuthenticated, logout} = useContext(AuthContext);
 
 
     return (
@@ -39,12 +40,13 @@ function SearchResultPage () {
                     <SearchBar onSearch={handleSearch} clickHandler={handleChange} searchValue={searchTerm} source="src/assets/rawg-logo_750x430.jpg" iconSrc="src/assets/magnifying-glass-thin.svg"/>
                 </div>
                 <section>
+                    {loading && <div className="loader-search-result"><Loader/></div>}
+                    {error && <p>Error occurred during the search.</p>}
                     <ul className="list-wrapper-search-result">
                         {gameResult && gameResult.results && gameResult.results.length > 0 && gameResult.results.map((game)=> (
                             <li key={game.id} className="list-items-search-result color-style min-width-1025px-links">
                                 <Link to={`/GameDetail/${game.id}`}>{game.name}</Link>
                                 <p>released: {game.released}</p>
-
                             </li>
                         ))}
                     </ul>

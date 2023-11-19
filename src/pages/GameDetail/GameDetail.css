@@ -1,4 +1,7 @@
 
+/*////////////////////////
+    1. Header
+////////////////////////*/
 .header-class-game-info {
     display: flex;
     flex-basis: 100%;
@@ -6,6 +9,10 @@
     justify-content: space-evenly;
     margin: 0 0 10px 0;
 }
+
+/*////////////////////////
+    2. child elements / mid section
+////////////////////////*/
 
 .mid-section-wrapper{
     display: flex;
@@ -19,19 +26,29 @@
     overflow: auto;
 }
 
-.footer-game-info {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-
-}
-
+/*////////////////////////
+    3. side element
+////////////////////////*/
 .tag-wrapper{
     display: flex;
     flex-direction: column;
     width: 15vw;
     overflow: auto;
     height: 55vh;
+}
+
+.line-spacing{
+    margin: 0 0 10px 0;
+}
+
+/*////////////////////////
+    3. footer elements
+////////////////////////*/
+.footer-game-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
 }
 
 .buttons-game-page {
@@ -54,8 +71,4 @@
     margin: 0 0 0 5px;
     height: 100%;
     max-height: 40px;
-}
-
-.line-spacing{
-    margin: 0 0 10px 0;
 }

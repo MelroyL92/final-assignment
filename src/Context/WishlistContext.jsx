@@ -5,10 +5,10 @@ export const WishlistContext = createContext();
 
 
 const WishlistProvider = ({children}) => {
-    const [wishlist,setWishlist] = useState([])
+    const [wishlist,setWishlist] = useState([]);
 
     const addToWishlist = () => {
-        setWishlist([...wishlist])
+        setWishlist([...wishlist]);
     }
 
     useEffect(() => {

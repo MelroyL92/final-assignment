@@ -16,7 +16,7 @@ function SearchBar({ source, iconSrc, clickHandler }) {
 
     return (
         <div className="parent-container-searchbar">
-            <form onSubmit={submit} className="searchbar-container media-area">
+            <form onSubmit={submit} className="searchbar-container color-style media-area">
                 <input
                     type="text"
                     value={searchTerm}

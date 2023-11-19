@@ -13,16 +13,15 @@ import TextArea from "../../components/TextArea/TextArea.jsx";
 function SpecificWishlist() {
     const { listName } = useParams();
     const { wishlist } = useContext(WishlistContext);
-    const {isAuthenticated, logout} = useContext(AuthContext)
+    const {isAuthenticated, logout} = useContext(AuthContext);
     const {control, register, handleSubmit, formState: { errors }, getValues } = useForm();
     const [grade, setGrade] = useState(0);
     const [filterSearch, setFilterSearch] = useState('');
     const [editMode, setEditMode] = useState({});
-    const [commentsAndGrades, setCommentsAndGrades] = useState({}); // Define commentsAndGrades state
+    const [commentsAndGrades, setCommentsAndGrades] = useState({});
     const textAreaRef = useRef();
 
 
-    //logic for the comments for the specific wishlist, similar to the overview
     const handleEditToggle = (gameId) => {
         setEditMode((prevEditMode) => ({
             ...prevEditMode,
@@ -50,7 +49,6 @@ function SpecificWishlist() {
         localStorage.setItem(`wishlist-comment-${listName}`, JSON.stringify(updatedCommentsAndGrades));
         alert('Your comments have been saved');
 
-        // Toggle off edit mode after submitting
         handleEditToggle(gameId);
     };
 
@@ -67,7 +65,7 @@ function SpecificWishlist() {
         return <div>List not found</div>;
     }
 
-    // filters the game based on grade or name
+
     const filteredGames = specificList.games.filter((game) =>
         game.name.toLowerCase().includes(filterSearch.toLowerCase()) ||
         (commentsAndGrades[game.id]?.grade && commentsAndGrades[game.id]?.grade.toString() === filterSearch)
@@ -163,11 +161,7 @@ function SpecificWishlist() {
                             </div>
                             <Button className="button-wishlist-specific color-style border-radius" clickHandler={() => handleEditToggle(game.id)} label="Edit"/>
                         </li>
-
                     ))}
-
-
-
                 </ul>
                 </div>
             </div>

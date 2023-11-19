@@ -1,14 +1,19 @@
+
+
+
+/*////////////////////////
+    1.  Parent element
+////////////////////////*/
+
 .edit-wrapper {
     display: flex;
     flex-direction: column;
 }
 
-.flex{
-    display: flex;
-    width: 20vw;
-    justify-content: space-around;
-    border: 1px solid black;
-}
+
+/*////////////////////////
+    1.  Child element seperator
+////////////////////////*/
 
 .form-profile{
     margin: 1px;

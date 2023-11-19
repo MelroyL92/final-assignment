@@ -13,7 +13,9 @@ import TextArea from "../../components/TextArea/TextArea.jsx";
 
 function Homepage () {
     const {handleSearch,searchTerm,handleChange} = useContext(SearchBarContext);
-    const {control, register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {control, register,
+        handleSubmit, formState: {errors},
+        reset} = useForm();
     const {isAuthenticated, logout} = useContext(AuthContext)
     const textAreaRef = useRef();
 
@@ -21,8 +23,8 @@ function Homepage () {
     function handleFormSubmit  (data) {
         console.log(data);
         alert('Thank you for the feedback, I really appreciate it!');
-        localStorage.setItem('feedback', JSON.stringify(data))
-        reset()
+        localStorage.setItem('feedback', JSON.stringify(data));
+        reset();
 
     }
 

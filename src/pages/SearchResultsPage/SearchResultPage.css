@@ -1,10 +1,16 @@
+
+/*////////////////////////
+    1. parent element
+////////////////////////*/
 .page-wrapper-search-result {
     display: flex;
     flex-direction: column;
     width: 85vw;
     overflow: auto;
 }
-
+/*////////////////////////
+    2. child element
+////////////////////////*/
 .list-wrapper-search-result{
     display: flex;
     flex-direction: row;
@@ -24,4 +30,12 @@
     border-radius: 25%;
     border: 5px outset black;
 
+}
+
+
+/*////////////////////////
+    3. Loading element
+////////////////////////*/
+.loader-search-result{
+    transform: translateY(-30%) translateX(0%);
 }

@@ -12,9 +12,9 @@ import Loader from "../../helpers/Loader/Loader.jsx";
 
 
 function GameDetail () {
-    const {gameInfo, fetchGameInfo} = useContext(GameInfoContext)
-    const [error, toggleError] = useState(false)
-    const [loading, setLoading] = useState(false)
+    const {gameInfo, fetchGameInfo} = useContext(GameInfoContext);
+    const [error, toggleError] = useState(false);
+    const [loading, setLoading] = useState(false);
 
 
     let { id } = useParams();
@@ -23,18 +23,17 @@ function GameDetail () {
     useEffect(() => {
 
         async function fetchGameData() {
-            toggleError(false)
-            setLoading(true)
+            toggleError(false);
+            setLoading(true);
 
             try {
-                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_API_KEY}`)
-                fetchGameInfo(response.data)
-                console.log(gameInfo)
+                const response = await axios.get(`https://api.rawg.io/api/games/${id}?key=${import.meta.env.VITE_REACT_API_KEY}`);
+                fetchGameInfo(response.data);
             } catch (e) {
-                console.error(e)
-                toggleError(true)
+                console.error(e);
+                toggleError(true);
             } finally {
-                setLoading(false)
+                setLoading(false);
             }
 
         }

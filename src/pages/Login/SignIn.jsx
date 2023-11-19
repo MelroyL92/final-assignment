@@ -9,15 +9,15 @@ import "./SignIn.css"
 import Loader from "../../helpers/Loader/Loader.jsx";
 
 function SignIn () {
-    const {login} = useContext(AuthContext)
+    const {login} = useContext(AuthContext);
     const [error, toggleError] = useState(false);
     const [loading, toggleLoading] = useState(false)
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const [visible, setVisible] = useState(false)
+    const [visible, setVisible] = useState(false);
 
     async function handleFormSubmit(data) {
-        toggleError(false)
-        toggleLoading(true)
+        toggleError(false);
+        toggleLoading(true);
         try {
             const response = await axios.post(`https://frontend-educational-backend.herokuapp.com/api/auth/signin`, {
                 username: data.username,
@@ -26,9 +26,9 @@ function SignIn () {
             login(response.data.accessToken)
         } catch (e) {
             console.error(e)
-            toggleError(true)
+            toggleError(true);
         } finally {
-            toggleLoading(false)
+            toggleLoading(false);
         }
     }
 

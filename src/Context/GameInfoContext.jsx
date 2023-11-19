@@ -5,7 +5,7 @@ export const GameInfoContext = createContext({});
 
 
 const GameInfoContextProvider = ({children}) => {
- const [gameInfo, fetchGameInfo] = useState({})
+ const [gameInfo, fetchGameInfo] = useState({});
 
  const data = {
   fetchGameInfo,

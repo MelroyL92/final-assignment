@@ -24,7 +24,8 @@ function WishlistOverview() {
     const [editedListName, setEditedListName] = useState(null);
     const textAreaRef = useRef();
 
-    // makes the lists on the page accessible to the searchBar
+
+
     useEffect(() => {
         try {
             const filteredList = wishlist.map((titleList) => ({
@@ -47,7 +48,6 @@ function WishlistOverview() {
         setSelectedList(null);
     }
 
-    // made to handle the form-inputs and store it to local storage or retrieve it when needed.
     useEffect(() => {
         try {
             const storedComments = JSON.parse(localStorage.getItem(`comments-${selectedList}`)) || {};
@@ -154,7 +154,7 @@ function WishlistOverview() {
                                                         register={register}
                                                         errors={errors}
                                                         control={control}
-                                                        rows={2}
+                                                        rows={1}
                                                         cols={25}
                                                         ref={textAreaRef}
                                                     />
@@ -217,7 +217,6 @@ function WishlistOverview() {
                             </div>
                         </div>
                     ))}
-
                 </section>
             </div>
         </main>

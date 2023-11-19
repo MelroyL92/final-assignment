@@ -1,8 +1,15 @@
+/*////////////////////////
+    1. parent element
+////////////////////////*/
 .page-wrapper {
     display: flex;
     width: 85vw;
     align-items: center;
 }
+
+/*////////////////////////
+    2. child element
+////////////////////////*/
 
 .button-wishlist-specific{
     display: flex;

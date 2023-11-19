@@ -1,4 +1,6 @@
-
+/*////////////////////////
+    1. parent element
+////////////////////////*/
 
 .page-wrapper {
     display: flex;
@@ -6,13 +8,6 @@
     width: 85vw;
     align-items: center;
 }
-
-.overflow-class {
-    overflow: auto;
-    height: 69vh;
-}
-
-
 
 .parent-container-form-wishlist{
     display: flex;
@@ -28,6 +23,10 @@
     word-wrap: break-word;
 }
 
+/*////////////////////////
+    1. child element
+////////////////////////*/
+
 .form-class-wishlist{
     display: flex;
     flex-direction: column;
@@ -39,4 +38,14 @@
     justify-content: center;
     width: 50px;
     margin: 1px 0;
+}
+
+
+/*////////////////////////
+    3. helper element
+////////////////////////*/
+
+.overflow-class {
+    overflow: auto;
+    height: 69vh;
 }

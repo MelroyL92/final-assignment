@@ -11,10 +11,10 @@ import Loader from "../../helpers/Loader/Loader.jsx";
 
 function Register () {
     const [error, toggleError] = useState(false);
-    const [visible, setVisible] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
+    const [visible, setVisible] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
     const {register, handleSubmit, formState: {errors}} = useForm();
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     async function handleRegisterSubmit (data){
         setLoading(true);
@@ -32,11 +32,11 @@ function Register () {
             alert("you have now signed up!")
 
         } catch (e) {
-            console.error(e.response)
-            setErrorMessage(e.response.data.message)
-            toggleError(true)
+            console.error(e.response);
+            setErrorMessage(e.response.data.message);
+            toggleError(true);
         } finally {
-            setLoading(false)
+            setLoading(false);
         }
     }
 

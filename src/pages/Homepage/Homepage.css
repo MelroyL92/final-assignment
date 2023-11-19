@@ -1,4 +1,7 @@
 
+/*////////////////////////
+    1. Header/mid  element
+////////////////////////*/
 .section-container-homepage{
     display: flex;
     width: 85vw;
@@ -12,6 +15,10 @@
     align-items: center;
 
 }
+
+/*////////////////////////
+    2. footer element
+////////////////////////*/
 
 .footer-container-homepage{
     display: flex;
