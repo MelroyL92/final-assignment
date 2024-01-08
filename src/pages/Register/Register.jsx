@@ -5,7 +5,7 @@ import Input from "../../components/Input/Input.jsx";
 import {useForm} from "react-hook-form";
 import Button from "../../components/Button/Button.jsx";
 import './Register.css'
-import Loader from "../../helpers/Loader/Loader.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 
 

@@ -6,7 +6,7 @@ import {useContext} from "react";
 import {SearchBarContext} from "../../Context/SearchBarContext.jsx";
 import Button from "../../components/Button/Button.jsx";
 import {AuthContext} from "../../Context/AuthContext.jsx";
-import Loader from "../../helpers/Loader/Loader.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 
 function SearchResultPage () {

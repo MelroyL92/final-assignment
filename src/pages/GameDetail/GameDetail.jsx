@@ -5,8 +5,8 @@ import './GameDetail.css'
 import GameTags from "../../components/GameTags/GameTags.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import CreateAndAddToWishlist from "../../components/CreateAndAddToWishlist/CreateAndAddToWishlist.jsx";
-import Purifyer from "../../helpers/Purifyer/Purifyer.jsx";
-import Loader from "../../helpers/Loader/Loader.jsx";
+import Purifyer from "../../components/Purifyer/Purifyer.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 
 
@@ -92,8 +92,8 @@ function GameDetail () {
             {loading && <div className="loader"><Loader/></div>}
             <footer className="footer-game-info">
                 <div className="buttons-game-page">
-                    <Link className="button-styling color-style Link-style" to="/SearchResultPage">Back</Link>
-                    <Link className="button-styling color-style Link-style" to="/">Home</Link>
+                    <Link className="button-styling color-style link-style" to="/SearchResultPage">Back</Link>
+                    <Link className="button-styling color-style link-style" to="/">Home</Link>
                     <CreateAndAddToWishlist/>
                     <img className="rawg-pic" src="../../../src/assets/rawg-logo_750x430.jpg" alt="API logo"/>
                 </div>

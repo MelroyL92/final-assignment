@@ -6,7 +6,7 @@ import Button from "../../components/Button/Button.jsx";
 import NavLinks from "../../components/Navlinks/Navlinks.jsx";
 import {useForm} from "react-hook-form";
 import "./SignIn.css"
-import Loader from "../../helpers/Loader/Loader.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 function SignIn () {
     const {login} = useContext(AuthContext);
