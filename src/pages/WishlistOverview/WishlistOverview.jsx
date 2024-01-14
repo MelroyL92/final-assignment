@@ -129,7 +129,7 @@ function WishlistOverview() {
                             <div>
                                 <div className="wishlist-container">
                                     {comments && comments[`subtitle-${titleList.name}`] && comments[`comment-${titleList.name}`] ? (
-                                        <div className="parent-container-form-wishlist">
+                                        <div className="parent-container-form-wishlist" >
                                             {editMode && editedListName === titleList.name ? (
                                                 <>
                                                     <h4>Subtitle:</h4>

@@ -16,19 +16,29 @@ function CreateAndAddToWishlist () {
 
     const handleAddToWishlist = () => {
         if (selectedWishlist && gameInfo) {
-            const updatedWishlists = wishlist.map((wishlist) => {
-                if (wishlist.name === selectedWishlist) {
-                    return {
-                        ...wishlist,
-                        games: [...wishlist.games, gameInfo],
-                    };
-                }
-                return wishlist;
-            });
 
-            setWishlist(updatedWishlists);
-            setNotification(`${gameInfo.name} has been added to ${selectedWishlist}`);
-        } else {
+            const isGameAlreadyInWishlist = wishlist
+                .find(wishlist => wishlist.name === selectedWishlist)
+                ?.games.some(game => game.name === gameInfo.name);
+
+            if (isGameAlreadyInWishlist) {
+                setNotification(`The game ${gameInfo.name} is already in ${selectedWishlist}.`);
+            } else {
+                const updatedWishlists = wishlist.map((wishlist) => {
+                    if (wishlist.name === selectedWishlist) {
+                        return {
+                            ...wishlist,
+                            games: [...wishlist.games, gameInfo],
+                        };
+                    }
+
+                    return wishlist;
+                });
+                setWishlist(updatedWishlists);
+                setNotification(`${gameInfo.name} has been added to ${selectedWishlist}`);
+            }
+
+        }else {
             setNotification('Please select a wishlist before adding the game.');
         }
     };
@@ -36,20 +46,32 @@ function CreateAndAddToWishlist () {
 
     const handleCreateWishlist = (data) => {
         if (data.newWishlistName.trim() !== '') {
-            const newWishlist = {
-                name: data.newWishlistName,
-                games: gameInfo ? [gameInfo] : [],
-            };
 
-            setWishlist(prevWishlist => [...prevWishlist, newWishlist]);
+            const isDuplicateWishlistName = wishlist.some(wishlist =>
+                wishlist.name === data.newWishlistName);
+            const isGameAlreadyInWishlist = wishlist.some(wishlist =>
+                wishlist.games.some(game => game.name === gameInfo.name)
+            );
 
-            setNewWishlistName('');
-            setNotification(`A new list has been created, and ${gameInfo.name} has been added to the list.`);
+            if (isDuplicateWishlistName) {
+                setNotification(`A wishlist with the name "${newWishlistName}" already exists. Please choose a different name.`)
+            } else if (isGameAlreadyInWishlist) {
+                setNotification(`The game ${gameInfo.name} is already in a wishlist.`);
+            } else {
+                const newWishlist = {
+                    name: data.newWishlistName,
+                    games: gameInfo ? [gameInfo] : [],
+                };
+
+                setWishlist(prevWishlist => [...prevWishlist, newWishlist]);
+
+                setNewWishlistName('');
+                setNotification(`A new list has been created, and ${gameInfo.name} has been added to the list.`);
+            }
         } else {
             setNotification('Please enter a name for the new wishlist.');
         }
     };
-
 
     return (
         <div>
