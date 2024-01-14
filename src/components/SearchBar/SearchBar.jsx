@@ -29,9 +29,11 @@ function SearchBar({ source, iconSrc, clickHandler }) {
                     <option className="media-select" value="genre">Genre</option>
                     <option value="publisher">Publisher</option>
                 </select>
-                <button type="submit">
-                    <img className="button-image" src={iconSrc} alt="search icon" />
-                </button>
+                <Button
+                    type="submit"
+                    label={<img src={iconSrc} alt="search icon" />}
+                    className="button-image"
+               />
             </form>
             <span>
         <img className="icon-wrapper" src={source} alt="API logo" />
@@ -43,3 +45,4 @@ function SearchBar({ source, iconSrc, clickHandler }) {
 export default SearchBar;
 
 import './SearchBar.css'
+import Button from "../Button/Button.jsx";

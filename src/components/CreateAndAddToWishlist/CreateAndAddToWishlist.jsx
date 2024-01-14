@@ -3,6 +3,8 @@ import {WishlistContext} from "../../Context/WishlistContext.jsx";
 import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import './CreateAndAddToWishlist.css'
 import Button from "../Button/Button.jsx";
+import Input from "../Input/Input.jsx";
+import {useForm} from "react-hook-form";
 
 function CreateAndAddToWishlist () {
     const { wishlist, setWishlist} = useContext(WishlistContext)
@@ -10,6 +12,7 @@ function CreateAndAddToWishlist () {
     const [selectedWishlist, setSelectedWishlist] = useState('');
     const [newWishlistName, setNewWishlistName] = useState('');
     const [notification, setNotification] = useState('');
+    const {register, handleSubmit, formState: {errors}} = useForm();
 
     const handleAddToWishlist = () => {
         if (selectedWishlist && gameInfo) {
@@ -31,18 +34,14 @@ function CreateAndAddToWishlist () {
     };
 
 
-    const handleCreateWishlist = () => {
-        if (newWishlistName.trim() !== '') {
+    const handleCreateWishlist = (data) => {
+        if (data.newWishlistName.trim() !== '') {
             const newWishlist = {
-                name: newWishlistName,
-                games: [],
+                name: data.newWishlistName,
+                games: gameInfo ? [gameInfo] : [],
             };
 
-            if (gameInfo) {
-                newWishlist.games.push(gameInfo);
-            }
-
-            setWishlist([...wishlist, newWishlist]);
+            setWishlist(prevWishlist => [...prevWishlist, newWishlist]);
 
             setNewWishlistName('');
             setNotification(`A new list has been created, and ${gameInfo.name} has been added to the list.`);
@@ -64,16 +63,24 @@ function CreateAndAddToWishlist () {
                         <option key={wishlist.name} value={wishlist.name}>{wishlist.name}</option>
                     ))}
                 </select>
-            <Button clickHandler={handleAddToWishlist} label="Add to wishlist" className="color-style border-radius"/>
-            <input
-                    type="text"
-                    value={newWishlistName}
-                    onChange={(e) => setNewWishlistName(e.target.value)}
-                    placeholder="Create a new wishlist"
-                    className="form-detail"
-                />
-
-            <Button clickHandler={handleCreateWishlist} label="Create new wishlist" className="color-style border-radius"/>
+            <Button type="button" clickHandler={handleAddToWishlist} label="Add to wishlist" className="color-style border-radius"/>
+           <form onSubmit={handleSubmit(handleCreateWishlist)}>
+               <Input
+                   className="form-detail"
+                   inputType="text"
+                   inputName="newWishlistName"
+                   inputId="newWishlistName"
+                   validationRules={{
+                       required: {
+                           value: true,
+                           message: "please fill in a valid name",
+                       }
+                   }}
+                   register={register}
+                   errors={errors}
+               />
+               <Button type="submit"  label="Create new wishlist" className="color-style border-radius"/>
+           </form>
         </div>
         </div>
     );

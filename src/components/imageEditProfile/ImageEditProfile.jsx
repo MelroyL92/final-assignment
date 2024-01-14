@@ -84,6 +84,7 @@ function ImageEditProfile () {
                         className="overlay-button color-style border-radius"
                         label="Edit Image"
                         clickHandler={handleEditClick}
+                        type="submit"
                     />
                 </div>
             ) : (
