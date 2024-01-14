@@ -2,7 +2,7 @@ import {createContext, useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader/Loader.jsx";
-
+import {validateToken} from "../helpers/JWT.js";
 
 export const AuthContext = createContext({});
 
@@ -14,12 +14,16 @@ function AuthContextProvider({children}) {
         status: 'pending',
     });
 
-
     useEffect( ()=> {
 
       const token =  localStorage.getItem('token');
 
         if (token) {
+            const { isValid, decodedToken } = validateToken(token);
+            console.log('isValid:', isValid);
+            console.log('decodedToken:', decodedToken);
+
+            if(isValid)
             void login(token);
         } else {
             toggleIsAuth({
