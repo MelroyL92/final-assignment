@@ -43,6 +43,15 @@ function GameDetail () {
     useEffect(()=> {
     },[gameInfo])
 
+    useEffect( ()=>{
+        const controller = new AbortController();
+
+        return function cleanup() {
+            controller.abort();
+            console.log("cleanup uitgevoerd");
+        }
+    },[])
+
 
     return (
         <main>
