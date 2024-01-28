@@ -6,6 +6,7 @@ import {useForm} from "react-hook-form";
 import Button from "../../components/Button/Button.jsx";
 import './Register.css'
 import Loader from "../../components/Loader/Loader.jsx";
+import abortController from "../../helpers/AbortController.js";
 
 
 
@@ -15,6 +16,9 @@ function Register () {
     const [errorMessage, setErrorMessage] = useState('');
     const {register, handleSubmit, formState: {errors}} = useForm();
     const [loading, setLoading] = useState(false);
+
+    abortController();
+
 
     async function handleRegisterSubmit (data){
         setLoading(true);

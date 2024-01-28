@@ -7,6 +7,7 @@ import {GameInfoContext} from "../../Context/GameInfoContext.jsx";
 import CreateAndAddToWishlist from "../../components/CreateAndAddToWishlist/CreateAndAddToWishlist.jsx";
 import Purifyer from "../../components/Purifyer/Purifyer.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
+import abortController from "../../helpers/AbortController.js";
 
 
 
@@ -18,6 +19,7 @@ function GameDetail () {
 
 
     let { id } = useParams();
+    abortController();
 
 
     useEffect(() => {
@@ -35,22 +37,12 @@ function GameDetail () {
             } finally {
                 setLoading(false);
             }
-
         }
         void fetchGameData()
     },[]);
 
     useEffect(()=> {
     },[gameInfo])
-
-    useEffect( ()=>{
-        const controller = new AbortController();
-
-        return function cleanup() {
-            controller.abort();
-            console.log("cleanup uitgevoerd");
-        }
-    },[])
 
 
     return (

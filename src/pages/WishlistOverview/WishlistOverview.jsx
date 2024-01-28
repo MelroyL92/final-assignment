@@ -10,6 +10,7 @@ import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
 import WishlistOverviewPicture from "../../components/WishlistOverviewPicture/WishlistOverviewPicture.jsx";
 import TextArea from "../../components/TextArea/TextArea.jsx";
+import abortController from "../../helpers/AbortController.js";
 
 
 function WishlistOverview() {
@@ -25,6 +26,7 @@ function WishlistOverview() {
     const textAreaRef = useRef();
 
 
+    abortController();
 
     useEffect(() => {
         try {

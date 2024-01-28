@@ -9,6 +9,7 @@ import Button from "../../components/Button/Button.jsx";
 import {useForm} from "react-hook-form";
 import {AuthContext} from "../../Context/AuthContext.jsx";
 import TextArea from "../../components/TextArea/TextArea.jsx";
+import abortController from "../../helpers/AbortController.js";
 
 function SpecificWishlist() {
     const { listName } = useParams();
@@ -20,6 +21,9 @@ function SpecificWishlist() {
     const [editMode, setEditMode] = useState({});
     const [commentsAndGrades, setCommentsAndGrades] = useState({});
     const textAreaRef = useRef();
+
+
+    abortController();
 
 
     const handleEditToggle = (gameId) => {
