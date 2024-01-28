@@ -19,9 +19,7 @@ function AuthContextProvider({children}) {
       const token =  localStorage.getItem('token');
 
         if (token) {
-            const { isValid, decodedToken } = validateToken(token);
-            console.log('isValid:', isValid);
-            console.log('decodedToken:', decodedToken);
+            const { isValid } = validateToken(token);
 
             if(isValid)
             void login(token);
