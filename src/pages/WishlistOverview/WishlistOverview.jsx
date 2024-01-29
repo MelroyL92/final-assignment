@@ -84,7 +84,7 @@ function WishlistOverview() {
 
     return (
         <main className="parent-container">
-            <nav className="nav-class color-style">
+            <nav className="color-style">
                 <NavLinks to="/" iconSrc="src/assets/house-line-thin.svg" altText="home icon" text="Home" />
                 <NavLinks to="/WishlistOverview" iconSrc="src/assets/list-thin.svg" altText="wishlist icon" text="Wishlists" />
                 <NavLinks to="/SearchResultPage" iconSrc="src/assets/magnifying-glass-thin.svg" altText="magnifying glass icon" text="Search" />
