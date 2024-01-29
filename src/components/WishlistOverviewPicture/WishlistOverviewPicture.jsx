@@ -25,7 +25,7 @@ import {useEffect, useState} from "react";
              if (selectedWishlist && selectedWishlist.games.length > 0) {
                  setFirstGame(selectedWishlist.games[0]);
              } else {
-                 setFirstGame(null);
+                 setFirstGame([]);
              }
          };
 

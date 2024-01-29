@@ -111,7 +111,7 @@ function WishlistOverview() {
                                onSearch={handleSearch}
                     />
                 </div>
-                <section className="result-class">
+                <section className="result-class overflow-class">
                     {filteredWishlist.map((titleList) => (
                         <div key={titleList.name} className="wishlist-overview-wrapper">
                             <div className="wishlist-image-wrapper">
