@@ -24,6 +24,7 @@ function AuthContextProvider({children}) {
             if(isValid)
             void login(token);
         } else {
+            localStorage.removeItem('token');
             toggleIsAuth({
                 ...isAuth,
                 status: 'done',
