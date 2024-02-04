@@ -1,6 +1,7 @@
 .button-container{
     display: flex;
     justify-content: space-between;
+    height: 40px;
 }
 
 .button-detail{
@@ -10,4 +11,11 @@
 .form-detail{
     border:1px solid black;
     margin: 1px 0 0 1px;
+}
+
+.div-detail{
+    display: flex;
+    height: 40px;
+    align-items: center;
+
 }

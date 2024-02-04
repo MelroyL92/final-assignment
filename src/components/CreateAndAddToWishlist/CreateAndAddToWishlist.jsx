@@ -87,6 +87,7 @@ function CreateAndAddToWishlist () {
                 </select>
             <Button type="button" clickHandler={handleAddToWishlist} label="Add to wishlist" className="color-style border-radius"/>
            <form onSubmit={handleSubmit(handleCreateWishlist)}>
+               <div className="div-detail">
                <Input
                    className="form-detail"
                    inputType="text"
@@ -102,6 +103,7 @@ function CreateAndAddToWishlist () {
                    errors={errors}
                />
                <Button type="submit"  label="Create new wishlist" className="color-style border-radius"/>
+               </div>
            </form>
         </div>
         </div>

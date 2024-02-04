@@ -19,8 +19,8 @@
     margin: 0 5px 0 5px;
     text-overflow:ellipsis;
     word-wrap: break-word;
-    border: 1px solid black;
 }
+
 .form-container{
     display: flex;
 }
