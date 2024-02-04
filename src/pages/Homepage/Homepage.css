@@ -4,7 +4,7 @@
 ////////////////////////*/
 .section-container-homepage{
     display: flex;
-    width: 85vw;
+    flex-basis: 85vw;
     height:68vh;
 }
 
@@ -22,7 +22,7 @@
 
 .footer-container-homepage{
     display: flex;
-    height: 32vh;
+    flex-basis: 32vh;
     max-width: calc(100% - 12vw);
     justify-content: center;
 }

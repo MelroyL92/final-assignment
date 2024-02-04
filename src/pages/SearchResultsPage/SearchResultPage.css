@@ -5,7 +5,7 @@
 .page-wrapper-search-result {
     display: flex;
     flex-direction: column;
-    width: 85vw;
+    flex-basis: 85vw;
     overflow: auto;
 }
 /*////////////////////////
@@ -24,7 +24,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 25vw;
+    flex-basis: 25vw;
     height: 20vh;
     margin: 10px 10px;
     border-radius: 25%;

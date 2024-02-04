@@ -8,7 +8,7 @@
 .register-wrapper{
     display: flex;
     height: 29vh;
-    width:25vw;
+    flex-basis:25vw;
 }
 
 .password-icon-register{

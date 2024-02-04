@@ -22,7 +22,7 @@
 .game-info-details {
     display: flex;
     height: 55vh;
-    width: 85vw;
+    flex-basis: 85vw;
     overflow: auto;
 }
 
@@ -32,7 +32,7 @@
 .tag-wrapper{
     display: flex;
     flex-direction: column;
-    width: 15vw;
+    flex-basis: 15vw;
     overflow: auto;
     height: 55vh;
 }
@@ -54,7 +54,7 @@
 .buttons-game-page {
     display: flex;
     justify-content: center;
-    width: 300px;
+    flex-basis: 300px;
 }
 
 .button-styling{

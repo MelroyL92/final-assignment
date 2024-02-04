@@ -3,7 +3,7 @@
 ////////////////////////*/
 .page-wrapper {
     display: flex;
-    width: 85vw;
+    flex-basis: 85vw;
     align-items: center;
 }
 

@@ -20,18 +20,17 @@ function AuthContextProvider({children}) {
 
         if (token) {
             const { isValid } = validateToken(token);
-
-            if(isValid)
-            void login(token);
+            if(isValid) {
+                void login(token);
+            }
         } else {
             localStorage.removeItem('token');
             toggleIsAuth({
                 ...isAuth,
                 status: 'done',
-            });
+
+            })
         }
-
-
       },[])
 
 
