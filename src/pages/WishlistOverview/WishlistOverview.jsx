@@ -111,14 +111,14 @@ function WishlistOverview() {
                                onSearch={handleSearch}
                     />
                 </div>
-                <section className="result-class overflow-class">
+                <section className="result-class overflow-class ">
                     {filteredWishlist.map((titleList) => (
-                        <div key={titleList.name} className="wishlist-overview-wrapper">
+                        <div key={titleList.name} className="wishlist-overview-wrapper color-style">
                             <div className="wishlist-image-wrapper">
                                 <WishlistOverviewPicture wishlistName={titleList.name}/>
                             </div>
                             <div className="wishlist-middle-wrapper">
-                                <Link className="wishlistLink" to={`/SpecificWishlist/${titleList.name}`}>
+                                <Link className="wishlistLink link-style" to={`/SpecificWishlist/${titleList.name}`}>
                                     <h3>{titleList.name}</h3>
                                 </Link>
                                 <p>Total Games: {titleList.games.length}</p>
@@ -129,9 +129,9 @@ function WishlistOverview() {
                                 ))}
                             </ul>
                             <div>
-                                <div className="wishlist-container">
+                                <div className="wishlist-container ">
                                     {comments && comments[`subtitle-${titleList.name}`] && comments[`comment-${titleList.name}`] ? (
-                                        <div className="parent-container-form-wishlist" >
+                                        <div className="parent-container-form-wishlist " >
                                             {editMode && editedListName === titleList.name ? (
                                                 <>
                                                     <h4>Subtitle:</h4>
@@ -174,7 +174,7 @@ function WishlistOverview() {
                                             )}
                                         </div>
                                     ) : (
-                                        <div>
+                                        <div className="form-container">
                                             <form key={titleList.name} onSubmit={handleSubmit((data) => handleWishlistCommentSubmit(data, titleList.name))}>
                                                 <p>Subtitle</p>
                                                 <Input

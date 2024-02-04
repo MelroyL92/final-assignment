@@ -114,12 +114,12 @@ function SpecificWishlist() {
                 <div className="overflow-class">
                 <ul className="overflow-class">
                     {filteredGames.map((game) => (
-                        <li key={game.id} className="wishlist-overview-wrapper">
+                        <li key={game.id} className="wishlist-overview-wrapper color-style">
                             <div className="wishlist-image-wrapper">
                                 <img src={game.background_image} alt="game-image" />
                             </div>
                             <div className="wishlist-middle-wrapper">
-                               <h3><Link to={`/GameDetail/${game.id}`}>{game.name}</Link></h3>
+                               <h3><Link to={`/GameDetail/${game.id}`} className="link-style">{game.name}</Link></h3>
                             </div>
                             <div className="parent-container-form-wishlist">
                             {editMode[game.id] ? (

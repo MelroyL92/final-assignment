@@ -87,12 +87,12 @@ h1 {
   width: 55vw;
   min-width: 500px;
   height: 23vh;
-  border: 5px outset grey;
+  border-radius: 10px;
 }
 
 .wishlist-image-wrapper{
   display: flex;
-  width: 33%;
+  flex-basis: 33%;
   flex-grow: 1;
   min-width: 200px;
 }
@@ -118,6 +118,8 @@ h1 {
   height:100%;
   overflow: initial;
 
+
+
 }
 .form-field{
   display: flex;
@@ -127,6 +129,7 @@ h1 {
   padding: 0 0 50px 10px;
   position: relative;
   border-radius: 12px;
+
 }
 
 .form-button{

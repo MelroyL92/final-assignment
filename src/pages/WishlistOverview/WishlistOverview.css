@@ -8,6 +8,7 @@
     width: 85vw;
     min-width: 600px;
     align-items: center;
+
 }
 
 .parent-container-form-wishlist{
@@ -18,6 +19,10 @@
     margin: 0 5px 0 5px;
     text-overflow:ellipsis;
     word-wrap: break-word;
+    border: 1px solid black;
+}
+.form-container{
+    display: flex;
 }
 
 /*////////////////////////
@@ -28,6 +33,7 @@
     display: flex;
     flex-direction: column;
     align-content: center;
+
 }
 
 .button-wishlist-overview{
