@@ -134,7 +134,7 @@ h1 {
 
 .form-button{
   display: flex;
-  flex-basis: 80px;
+  width: 80px;
   border-radius: 12px;
   justify-content: center
 }
