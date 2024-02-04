@@ -45,7 +45,7 @@ function SearchResultPage () {
                     <ul className="list-wrapper-search-result">
                         {gameResult && gameResult.results && gameResult.results.length > 0 && gameResult.results.map((game)=> (
                             <li key={game.id} className="list-items-search-result color-style min-width-1025px-links">
-                                <Link to={`/GameDetail/${game.id}`}>{game.name}</Link>
+                                <h4><Link to={`/GameDetail/${game.id}`} className="link-style">{game.name}</Link></h4>
                                 <p>released: {game.released}</p>
                             </li>
                         ))}
