@@ -49,7 +49,7 @@ vervolgens toegang tot heeft. Soms zijn het statische compomnenten die puur een 
 
 Binnen dit project wordt daarnaast ook gebruik gemaakt van een API. De toegang tot die API wordt geregeld via een API key.
 De key staat in het .env bestand en kan 20.000 keer per maand gratis gebruikt worden. Deze key wordt automatisch doorgegeven aan de API,
-maar zal in dit project ook nog onderaan deze pagina bijgevoegd worden. Bij wijzigingen in het project raad ik aan om altijd even een build commando van
+maar zal in dit project ook nog in de documentatie bijgevoegd worden onderaan het document 'Documentatie eindopdracht frontend 2.0'. Bij wijzigingen in het project raad ik aan om altijd even een build commando van
 npm uit te voeren, dit kan door in de terminal het volgende in te voeren:
 
 `npm run build`
